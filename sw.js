@@ -2,7 +2,7 @@
    MobiMate — Service Worker
    BUMP `CACHE` ON EVERY DEPLOY. Old caches are purged on activate.
    ===================================================================== */
-const CACHE = 'mobimate-v2026.07.27-7';
+const CACHE = 'mobimate-v2026.07.27-8';
 
 const CORE = [
   './',
@@ -103,7 +103,7 @@ self.addEventListener('notificationclick', e => {
 });
 
 self.addEventListener('push', e => {
-  let d = { title: 'Monthly Cost Reduction', body: 'New activity' };
+  let d = { title: 'MobiMate', body: 'New activity' };
   try { if (e.data) d = Object.assign(d, e.data.json()); } catch (_) { if (e.data) d.body = e.data.text(); }
   e.waitUntil(self.registration.showNotification(d.title, {
     body: d.body,

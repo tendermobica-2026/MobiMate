@@ -544,6 +544,7 @@ input:disabled,select:disabled,textarea:disabled{background:#f5f7fa;color:var(--
           <div style="font-size:12px;color:var(--ink-soft);margin-bottom:11px">Version <b id="verSys"></b> · Cache <b id="cacheSys"></b> · Backend <b id="backendSys"></b></div>
           <div class="toolbar">
             <button class="btn" id="btnCheckUpdate">🔄 Check update</button>
+            <button class="btn" id="btnInstallStatus">📲 Install status</button>
             <button class="btn solid" id="btnLoadAcc">🧰 Load accessories</button>
             <button class="btn" id="btnClearCache">🧹 Clear cache &amp; reload</button>
             <button class="btn" id="btnBackup">💾 Backup JSON</button>
@@ -583,8 +584,8 @@ window.ACC_CATEGORIES=["Hardware – Runners, Drawers & Sliding", "Hardware – 
    MobiMate — Mobica Material Price List
    MT-Track architecture: single-file PWA + Firebase RTDB + SW cache ver
    ===================================================================== */
-const APP_VERSION = 'v1.07';
-const CACHE_NAME  = 'mobimate-v2026.07.27-7';
+const APP_VERSION = 'v1.08';
+const CACHE_NAME  = 'mobimate-v2026.07.27-8';
 
 const FIREBASE_CONFIG = {
   apiKey: "PASTE_API_KEY",
@@ -797,6 +798,22 @@ let deferredInstall=null;
 window.addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); deferredInstall=e;
   if(S.ready) toast('MobiMate can be installed on this device','ok','INSTALL',triggerInstall,7000); });
 window.addEventListener('appinstalled',()=>{ deferredInstall=null; toast('MobiMate installed 🎉','ok'); });
+async function checkInstall(){
+  const standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone===true;
+  const iOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  const swOK = 'serviceWorker' in navigator && !!navigator.serviceWorker.controller;
+  const icons=['icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png'];
+  let missing=[];
+  for(const p of icons){ try{ const r=await fetch(p,{cache:'no-store'}); if(!r.ok) missing.push(p); }catch(e){ missing.push(p); } }
+  let manifestOK=true; try{ const r=await fetch('manifest.json',{cache:'no-store'}); manifestOK=r.ok; }catch(e){ manifestOK=false; }
+  const lines=[];
+  lines.push(standalone?'✅ Already installed (running as app)':'▫️ Not yet installed');
+  lines.push(swOK?'✅ Service worker active':'❌ Service worker not active');
+  lines.push(manifestOK?'✅ manifest.json loads':'❌ manifest.json missing (upload it)');
+  lines.push(missing.length? `❌ Icon files missing → upload the icons/ folder:\n   ${missing.join('\n   ')}` : '✅ All icon files load');
+  lines.push(deferredInstall? '✅ Install prompt is READY — tap Install app':(iOS?'ℹ️ iPhone: use Safari → Share → Add to Home Screen':'ℹ️ Install prompt not offered yet — usually because an icon file above is missing, or open in Chrome and reload once'));
+  alert('MobiMate install status\n\n'+lines.join('\n'));
+}
 function triggerInstall(){
   if(deferredInstall){ deferredInstall.prompt(); deferredInstall.userChoice.finally(()=>{ deferredInstall=null; }); return; }
   const iOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
@@ -1509,6 +1526,7 @@ function wire(){
   $('#btnCheckUpdate').onclick=()=>{ navigator.serviceWorker?.getRegistration().then(r=>{ r&&r.update(); toast('Checked for updates','ok'); }); };
   $('#btnClearCache').onclick=clearCacheReload; $('#btnBackup').onclick=backupJSON; $('#btnRestoreBk').onclick=()=>$('#restoreFile').click();
   if($('#btnLoadAcc'))$('#btnLoadAcc').onclick=loadAccessories;
+  if($('#btnInstallStatus'))$('#btnInstallStatus').onclick=checkInstall;
   $('#restoreFile').onchange=e=>{ if(e.target.files[0])restoreJSON(e.target.files[0]); }; $('#btnEnablePush').onclick=enablePush;
   let st; $('#globalSearch').addEventListener('input',e=>{ clearTimeout(st); st=setTimeout(()=>runSearch(e.target.value),160); });
   $('#globalSearch').addEventListener('keydown',e=>{ if(e.key==='Escape'){ e.target.value=''; runSearch(''); } });
