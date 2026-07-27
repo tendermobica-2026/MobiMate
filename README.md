@@ -1,6 +1,8 @@
 # MobiMate — Mobica Material Price List (PWA)
 
-Single-file PWA. Same stack as MT-Track: HTML + Firebase Realtime Database + GitHub → Vercel + versioned service-worker cache. Orange scheme, MT-Track-style interface.
+Single-file PWA. Same stack as MT-Track: HTML + Firebase Realtime Database + GitHub → Vercel + versioned service-worker cache. Logo-based peach/orange + brown scheme, MT-Track-style interface, fully responsive (desktop / tablet / mobile / iPhone).
+
+**Current version:** `v1.01` / cache `mobimate-v2026.07.27`
 
 ## Files (upload ALL of these to GitHub)
 ```
@@ -10,18 +12,21 @@ manifest.json   ← PWA manifest
 icons/icon-192.png
 icons/icon-512.png
 icons/icon-maskable-512.png
+icons/logo-mark.png   ← your logo mark (used in the top bar, login, and PWA icon)
 ```
 
-## Your workflow (what you asked for)
-1. You tell me the change.
-2. I edit and send you back **only the files that changed** + the exact filenames.
-3. You upload those files to the GitHub repo. Vercel auto-deploys. Done — no other steps.
+## What changed in v1.01
+- **Data auto-loads** on first sign-in — the 165 materials from your Excel appear immediately, no button press. (Manual 🌱 Load is still there if the list is ever empty.)
+- **Your logo** is now the app's home-screen icon and the top-bar / login mark; the whole colour scheme is taken from it (peach-orange + brown).
+- **Responsive** — top bar, tiles, tables and menus reflow for desktop, tablet, mobile and iPhone (incl. SE/mini).
+- **Dashboard category selector** — Welcome message, then a collapsible **Material Categories** panel listing every header from your Excel. Tap a header → its page opens with the price columns.
+- **Persistent “📂 Material Categories ▾” collapse button** in the header bar on every page: open it to jump to another header or back to 🏠 Dashboard. Each category page also has a 🏠 Dashboard / 📂 Switch category back-bar.
 
-On every version bump I change all three version strings for you so the phones auto-update:
-- `APP_VERSION` in `index.html`
-- `CACHE_NAME` in `index.html`
-- `CACHE` in `sw.js`
-(All three must match. Current = `v1.00` / `mobimate-v2026.07.24`.)
+## Your workflow
+1. You tell me the change.
+2. I edit and send back **only the files that changed** + exact filenames.
+3. You upload those files to the GitHub repo. Vercel auto-deploys. No other steps.
+I bump all three version strings each time so installed phones auto-update.
 
 ## Interface (matches the MT-Track screenshot, orange)
 - **Row 1:** MobiMate name + logo → Live-sync pill → Refresh → 🔔 bell / ↩️ undo / 👁️ view-as icons → user chip with role badge.
