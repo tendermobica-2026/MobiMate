@@ -1,8 +1,8 @@
 /* =====================================================================
-   Monthly Cost Reduction — Service Worker
+   MobiMate — Service Worker
    BUMP `CACHE` ON EVERY DEPLOY. Old caches are purged on activate.
    ===================================================================== */
-const CACHE = 'mcr-v2026.07.24';
+const CACHE = 'mobimate-v2026.07.24';
 
 const CORE = [
   './',

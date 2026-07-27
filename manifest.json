@@ -1,13 +1,13 @@
 {
-  "name": "Monthly Cost Reduction — Mobica Tender",
-  "short_name": "MCR",
-  "description": "Material price list and monthly cost reduction tracker for Mobica Tender & Estimation.",
+  "name": "MobiMate — Mobica Material Price List",
+  "short_name": "MobiMate",
+  "description": "Material price list for Mobica Tender & Estimation — add, edit, price-change alerts, per-category pages.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#0f2545",
-  "theme_color": "#0f2545",
+  "background_color": "#ea7317",
+  "theme_color": "#ea7317",
   "lang": "en",
   "dir": "ltr",
   "categories": ["business", "productivity", "finance"],
@@ -15,9 +15,5 @@
     { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
     { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-  ],
-  "shortcuts": [
-    { "name": "Materials", "url": "./index.html#materials", "description": "Open the material price list" },
-    { "name": "Reduction", "url": "./index.html#reduction", "description": "Open the monthly reduction report" }
   ]
 }
