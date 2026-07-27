@@ -2,14 +2,14 @@
 
 Single-file PWA. Same stack as MT-Track: HTML + Firebase Realtime Database + GitHub → Vercel + versioned service-worker cache. Installable on laptop & mobile, logo as the app icon.
 
-**Current version:** `v1.05` / cache `mobimate-v2026.07.27-5`
+**Current version:** `v1.07` / cache `mobimate-v2026.07.27-7`
 
 ## Files in GitHub
 ```
 index.html   sw.js   manifest.json
 icons/icon-192.png  icons/icon-512.png  icons/icon-maskable-512.png  icons/logo-mark.png
 ```
-**This update (v1.05) — upload these:** `index.html`, `sw.js`, and the four `icons/*.png` (upload the whole `icons/` folder this time — see note below).
+**This update (v1.07) — upload these:** `index.html`, `sw.js`.
 
 ## What changed in v1.05
 - **Accessories now load for existing installs.** Before, if a device already had the materials loaded, the accessories were skipped. Now there's an automatic migration: on next open, accessories are **added** to whatever you already have (materials and your edits are kept). If they still don't show, an admin can press **Lists → System → 🧰 Load accessories**.

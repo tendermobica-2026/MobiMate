@@ -61,6 +61,16 @@ a{color:var(--org);text-decoration:none}
 .btn-primary:active{transform:translateY(1px)}
 .login-err{background:var(--red-soft);color:var(--red);border-radius:var(--radius-sm);padding:9px 11px;font-size:12px;margin-bottom:11px;font-weight:700}
 .login-foot{text-align:center;margin-top:15px;font-size:10.5px;color:var(--ink-mute);letter-spacing:.5px}
+.pw-wrap{position:relative;display:flex;align-items:center}
+.pw-wrap input{width:100%;padding-right:44px}
+.pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;background:transparent;opacity:.7}
+.pw-eye:active{opacity:1;background:var(--org-tint)}
+.pw-eye.on{opacity:1}
+.btn-install{width:100%;margin-top:10px;padding:12px;border-radius:var(--radius-sm);background:var(--org-tint);color:var(--org-deep);font-weight:800;border:1.5px solid var(--org-soft)}
+.btn-install:active{transform:translateY(1px)}
+.login-help{text-align:center;margin-top:12px}
+.login-help>button{font-size:11.5px;color:var(--org-deep);font-weight:800;text-decoration:underline}
+.login-help #loginHelp{margin-top:8px;font-size:11px;color:var(--ink-soft);background:var(--org-tint);border:1px solid var(--org-soft);border-radius:10px;padding:9px 11px;line-height:1.6}
 
 /* ===================== TOP BAR (MT-Track style, white) ===================== */
 #app{min-height:100vh;display:flex;flex-direction:column}
@@ -408,9 +418,15 @@ input:disabled,select:disabled,textarea:disabled{background:#f5f7fa;color:var(--
     <div class="field"><label>User</label>
       <select id="loginUser"><option value="">— select role first —</option></select></div>
     <div class="field"><label>Password</label>
-      <input type="password" id="loginPass" placeholder="••••" autocomplete="off"></div>
+      <div class="pw-wrap">
+        <input type="password" id="loginPass" placeholder="••••" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="text">
+        <button type="button" class="pw-eye" id="pwEye" aria-label="Show password">👁️</button>
+      </div></div>
     <div id="loginErr" class="login-err hidden"></div>
     <button class="btn-primary" id="loginBtn">SIGN IN</button>
+    <button type="button" class="btn-install" id="loginInstall">📲 Install app on this device</button>
+    <div class="login-help"><button type="button" id="loginHelpBtn">Trouble signing in?</button>
+      <div id="loginHelp" class="hidden">Default passwords — Admin <b>1111</b> · Tender <b>2222</b> · Purchasing <b>3333</b> · Top Management <b>4444</b>. Tap 👁️ to check what you typed.</div></div>
     <div class="login-foot">v<span id="verLogin"></span> · Firebase RTDB · PWA</div>
   </div>
 </div>
@@ -567,8 +583,8 @@ window.ACC_CATEGORIES=["Hardware – Runners, Drawers & Sliding", "Hardware – 
    MobiMate — Mobica Material Price List
    MT-Track architecture: single-file PWA + Firebase RTDB + SW cache ver
    ===================================================================== */
-const APP_VERSION = 'v1.06';
-const CACHE_NAME  = 'mobimate-v2026.07.27-6';
+const APP_VERSION = 'v1.07';
+const CACHE_NAME  = 'mobimate-v2026.07.27-7';
 
 const FIREBASE_CONFIG = {
   apiKey: "PASTE_API_KEY",
@@ -745,26 +761,34 @@ function doUndo(){ if(!realAdmin()||!S.undoStack.length)return; const a=S.undoSt
 /* ============================ AUTH ============================ */
 function loadUsers(){ const raw=localStorage.getItem('MOBIMATE_USERS'); S.users=raw?JSON.parse(raw):DEFAULT_USERS.slice(); }
 function saveUsers(){ localStorage.setItem('MOBIMATE_USERS',JSON.stringify(S.users)); DB.set('users',S.users); }
+/* merged view: defaults are always present; any saved overrides (e.g. changed passwords) win */
+function userList(){ const m={}; DEFAULT_USERS.forEach(u=>m[u.role+'|'+u.name]=Object.assign({},u)); (S.users||[]).forEach(u=>{ if(u&&u.name&&u.role) m[u.role+'|'+u.name]=Object.assign({},m[u.role+'|'+u.name]||{},u); }); return Object.values(m); }
 function initLogin(){
   loadUsers(); $('#verLogin').textContent=APP_VERSION.replace('v','');
   let picked=null;
   $$('#roleGrid .role-btn').forEach(b=>b.onclick=()=>{
     $$('#roleGrid .role-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); picked=b.dataset.role;
-    const sel=$('#loginUser'); sel.innerHTML=''; const us=S.users.filter(u=>u.role===picked);
+    const sel=$('#loginUser'); sel.innerHTML=''; const us=userList().filter(u=>u.role===picked);
     if(!us.length){ sel.innerHTML='<option value="">— no users —</option>'; return; }
     us.forEach(u=>{ const o=document.createElement('option'); o.value=u.name; o.textContent=u.name; sel.appendChild(o) });
   });
-  const tryLogin=()=>{ const name=$('#loginUser').value,pass=$('#loginPass').value,err=$('#loginErr');
-    if(!picked){ err.textContent='Select a role.'; err.classList.remove('hidden'); return }
+  const tryLogin=()=>{ const name=$('#loginUser').value,pass=($('#loginPass').value||'').trim(),err=$('#loginErr');
+    if(!picked){ err.textContent='Select a role first.'; err.classList.remove('hidden'); return }
     if(!name){ err.textContent='Select a user.'; err.classList.remove('hidden'); return }
-    const u=S.users.find(x=>x.name===name&&x.role===picked);
-    if(!u||u.pass!==pass){ err.textContent='Wrong password.'; err.classList.remove('hidden'); $('#loginPass').value=''; return }
-    err.classList.add('hidden'); S.user=u; S.role=u.role;
-    sessionStorage.setItem('MOBIMATE_SESSION',JSON.stringify({name:u.name,role:u.role})); startApp(); };
+    const u=userList().find(x=>x.name===name&&x.role===picked);
+    const du=DEFAULT_USERS.find(x=>x.name===name&&x.role===picked);
+    if(!u&&!du){ err.textContent='User not found for this role.'; err.classList.remove('hidden'); return }
+    const okPass = (u&&String(u.pass).trim()===pass) || (du&&String(du.pass).trim()===pass);  // default always works as fallback
+    if(!okPass){ err.innerHTML='Wrong password. Tap 👁️ to check what you typed.'; err.classList.remove('hidden'); const h=$('#loginHelp'); if(h)h.classList.remove('hidden'); return }
+    const acct=u||du; err.classList.add('hidden'); S.user=acct; S.role=acct.role;
+    sessionStorage.setItem('MOBIMATE_SESSION',JSON.stringify({name:acct.name,role:acct.role})); startApp(); };
   $('#loginBtn').onclick=tryLogin;
   $('#loginPass').addEventListener('keydown',e=>{ if(e.key==='Enter')tryLogin() });
+  const eye=$('#pwEye'); if(eye) eye.onclick=()=>{ const p=$('#loginPass'); const show=p.type==='password'; p.type=show?'text':'password'; eye.classList.toggle('on',show); eye.textContent=show?'🙈':'👁️'; p.focus(); };
+  const inst=$('#loginInstall'); if(inst) inst.onclick=()=>triggerInstall();
+  const hb=$('#loginHelpBtn'); if(hb) hb.onclick=()=>$('#loginHelp').classList.toggle('hidden');
   const sess=sessionStorage.getItem('MOBIMATE_SESSION');
-  if(sess){ try{ const s=JSON.parse(sess); const u=S.users.find(x=>x.name===s.name&&x.role===s.role); if(u){ S.user=u; S.role=u.role; startApp(); } }catch(e){} }
+  if(sess){ try{ const s=JSON.parse(sess); const u=userList().find(x=>x.name===s.name&&x.role===s.role); if(u){ S.user=u; S.role=u.role; startApp(); } }catch(e){} }
 }
 function logout(){ sessionStorage.removeItem('MOBIMATE_SESSION'); location.reload(); }
 
