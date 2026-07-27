@@ -584,8 +584,8 @@ window.ACC_CATEGORIES=["Hardware – Runners, Drawers & Sliding", "Hardware – 
    MobiMate — Mobica Material Price List
    MT-Track architecture: single-file PWA + Firebase RTDB + SW cache ver
    ===================================================================== */
-const APP_VERSION = 'v1.09';
-const CACHE_NAME  = 'mobimate-v2026.07.27-9';
+const APP_VERSION = 'v1.10';
+const CACHE_NAME  = 'mobimate-v2026.07.27-10';
 
 const FIREBASE_CONFIG = {
   apiKey: "PASTE_API_KEY",
@@ -801,24 +801,25 @@ window.addEventListener('appinstalled',()=>{ deferredInstall=null; toast('MobiMa
 async function checkInstall(){
   const standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone===true;
   const iOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  const chrome=/chrome|crios/i.test(navigator.userAgent) && !/edg|opr|samsung/i.test(navigator.userAgent);
   const swOK = 'serviceWorker' in navigator && !!navigator.serviceWorker.controller;
   const bust='?_='+Date.now();
-  const icons=[['icons/icon-192.png',true],['icons/icon-512.png',true],['icons/icon-maskable-512.png',false]];
-  let missReq=[],missOpt=[];
-  for(const [p,req] of icons){ let ok=false; try{ const r=await fetch(p+bust,{cache:'reload'}); ok=r.ok; }catch(e){} if(!ok){ (req?missReq:missOpt).push(p); } }
-  let manifestOK=true; try{ const r=await fetch('manifest.json'+bust,{cache:'reload'}); manifestOK=r.ok; }catch(e){ manifestOK=false; }
+  let mf=null; try{ const r=await fetch('manifest.json'+bust,{cache:'reload'}); if(r.ok) mf=await r.json(); }catch(e){}
+  let has192=false,has512=false;
+  if(mf&&Array.isArray(mf.icons)) mf.icons.forEach(ic=>{ const s=(ic.sizes||''); const ok=(ic.src||'').startsWith('data:')||true; if(ok){ if(/192/.test(s))has192=true; if(/512/.test(s))has512=true; } });
+  const iconsOK=has192&&has512;
   const lines=[];
-  lines.push(standalone?'✅ Already installed (running as app)':'▫️ Not yet installed');
-  lines.push(swOK?'✅ Service worker active':'❌ Service worker not active');
-  lines.push(manifestOK?'✅ manifest.json loads':'❌ manifest.json missing (upload it)');
-  lines.push(missReq.length? `❌ Required icon missing → upload:\n   ${missReq.join('\n   ')}` : '✅ Required icons (192 + 512) load');
-  if(missOpt.length) lines.push(`⚠️ Optional icon missing (install still works):\n   ${missOpt.join('\n   ')}`);
-  const canInstall = manifestOK && !missReq.length;
-  lines.push(deferredInstall? '✅ Install prompt is READY — tap “Install app”'
-    : (standalone?'—'
-    : iOS?'ℹ️ iPhone: use Safari → Share → Add to Home Screen'
-    : canInstall?'ℹ️ Icons OK. In Chrome, reload the page once, then tap Install app (or ⋮ menu → Install app). If it still won’t, run “Clear cache & reload” and retry.'
-    : '❌ Fix the missing file(s) above, then reload.'));
+  lines.push(standalone?'✅ Already installed (running as an app)':'▫️ Not installed yet');
+  lines.push(swOK?'✅ Service worker active':'❌ Service worker not active — reload the page once');
+  lines.push(mf?'✅ manifest.json loads':'❌ manifest.json not loading — upload it');
+  lines.push(iconsOK?'✅ App icon available (embedded — no icons folder needed)':'❌ Manifest has no usable icon — upload the new manifest.json');
+  const canInstall = swOK && mf && iconsOK;
+  if(standalone) lines.push('— nothing to do, it is already installed');
+  else if(deferredInstall) lines.push('✅ READY — tap “Install app on this device”');
+  else if(iOS) lines.push('ℹ️ iPhone: open in Safari → Share → Add to Home Screen');
+  else if(!chrome) lines.push('ℹ️ Open the site in Google Chrome (Samsung Internet/Firefox only make shortcuts), then reload once');
+  else if(canInstall) lines.push('ℹ️ Everything is ready. Reload the page once, then tap Install (or Chrome ⋮ menu → Install app). If it still won’t, run “Clear cache & reload” and try again.');
+  else lines.push('❌ Fix the item(s) above, then reload.');
   alert('MobiMate install status\n\n'+lines.join('\n'));
 }
 function triggerInstall(){

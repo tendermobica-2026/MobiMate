@@ -2,16 +2,12 @@
    MobiMate — Service Worker
    BUMP `CACHE` ON EVERY DEPLOY. Old caches are purged on activate.
    ===================================================================== */
-const CACHE = 'mobimate-v2026.07.27-9';
+const CACHE = 'mobimate-v2026.07.27-10';
 
 const CORE = [
   './',
   './index.html',
-  './manifest.json',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-  './icons/icon-maskable-512.png',
-  './icons/logo-mark.png'
+  './manifest.json'
 ];
 
 /* Never intercept these — they must always hit the network directly.
