@@ -2,14 +2,20 @@
 
 Single-file PWA. Same stack as MT-Track: HTML + Firebase Realtime Database + GitHub → Vercel + versioned service-worker cache. Installable on laptop & mobile, logo as the app icon.
 
-**Current version:** `v1.04` / cache `mobimate-v2026.07.27-4`
+**Current version:** `v1.05` / cache `mobimate-v2026.07.27-5`
 
 ## Files in GitHub
 ```
 index.html   sw.js   manifest.json
 icons/icon-192.png  icons/icon-512.png  icons/icon-maskable-512.png  icons/logo-mark.png
 ```
-**This update (v1.04) — upload these:** `index.html`, `sw.js` (only these changed).
+**This update (v1.05) — upload these:** `index.html`, `sw.js`, and the four `icons/*.png` (upload the whole `icons/` folder this time — see note below).
+
+## What changed in v1.05
+- **Accessories now load for existing installs.** Before, if a device already had the materials loaded, the accessories were skipped. Now there's an automatic migration: on next open, accessories are **added** to whatever you already have (materials and your edits are kept). If they still don't show, an admin can press **Lists → System → 🧰 Load accessories**.
+- **New home-screen app icon** — a bold, full-bleed logo (peach with the white chart + price-tag mark), in the clean style of the MobiQuote "MQ" icon. It's embedded in the app (inline + apple-touch-icon + manifest data-URI) so it shows even if the icon files aren't uploaded.
+
+> **Why the icon showed a plain "M":** the home-screen icon comes from the `icons/*.png` files. Since you've been uploading only the two changed files, the `icons/` folder was never on GitHub, so the phone made a letter icon. **This time upload the `icons/` folder too** (all four PNGs). After uploading, remove the old installed app and re-add it to the home screen to pick up the new icon.
 
 ## What changed in v1.04
 - **Accessories added** — your accessories price list (8 categories, 112 items) is now in the app alongside materials, working the same way (same columns, prices, EGP, search, chat, history, notifications).
