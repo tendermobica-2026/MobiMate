@@ -2,14 +2,22 @@
 
 Single-file PWA. Same stack as MT-Track: HTML + Firebase Realtime Database + GitHub → Vercel + versioned service-worker cache. Installable on laptop & mobile, logo as the app icon.
 
-**Current version:** `v1.03` / cache `mobimate-v2026.07.27-3`
+**Current version:** `v1.04` / cache `mobimate-v2026.07.27-4`
 
 ## Files in GitHub
 ```
 index.html   sw.js   manifest.json
 icons/icon-192.png  icons/icon-512.png  icons/icon-maskable-512.png  icons/logo-mark.png
 ```
-**This update (v1.03) — upload these:** `index.html`, `sw.js`, and the four `icons/*.png` (icons were regenerated from the new logo).
+**This update (v1.04) — upload these:** `index.html`, `sw.js` (only these changed).
+
+## What changed in v1.04
+- **Accessories added** — your accessories price list (8 categories, 112 items) is now in the app alongside materials, working the same way (same columns, prices, EGP, search, chat, history, notifications).
+  - New **🧰 Accessories Categories** dropdown in the top bar, beside **📂 Material Categories**, before Activity.
+  - New **Accessories Categories** collapsible card on the Dashboard, beside the Material Categories card, before the search box.
+  - Accessories auto-load on first sign-in (total now 277 items = 165 materials + 112 accessories).
+- **Search** now returns and shows material/accessory **name, measure unit, specs and note**, split into Materials and Accessories groups.
+- **Users & Roles** card removed from the Lists tab (passwords are managed in 👤 → 🔑 Change Passwords; name/title lists in the Manage… screens).
 
 ## What changed in v1.03
 - **New logo** — your attached icon is now the app icon (home screen / install), the top-bar mark, and the login mark. Embedded in `index.html` so it never breaks, and regenerated as the PWA icons.

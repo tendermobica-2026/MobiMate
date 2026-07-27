@@ -454,6 +454,10 @@ input:disabled,select:disabled,textarea:disabled{background:#f5f7fa;color:var(--
         <div class="card-head" data-collapse><span class="ic">📂</span><h3>Material Categories</h3><span class="side" id="catSelSide"></span><span class="chev">▼</span></div>
         <div class="card-body"><div class="cat-grid" id="catGrid"></div></div>
       </div>
+      <div class="card">
+        <div class="card-head" data-collapse><span class="ic">🧰</span><h3>Accessories Categories</h3><span class="side" id="accSelSide"></span><span class="chev">▼</span></div>
+        <div class="card-body"><div class="cat-grid" id="accGrid"></div></div>
+      </div>
       <div class="searchrow">
         <div class="searchbox">
           <span>🔍</span>
@@ -518,17 +522,6 @@ input:disabled,select:disabled,textarea:disabled{background:#f5f7fa;color:var(--
             <span style="font-size:12px;color:var(--ink-soft)">EGP column = USD × FX. Current: <b id="fxShow"></b></span>
           </div>
         </div></div>
-      <div class="card"><div class="card-head" data-collapse><span class="ic">👥</span><h3>Users &amp; Roles</h3><span class="pill" id="pillUsers"></span><span class="chev">▼</span></div>
-        <div class="card-body">
-          <div class="tablewrap"><table style="min-width:520px"><thead><tr><th>Name</th><th>Role</th><th>Password</th><th style="text-align:right">—</th></tr></thead><tbody id="listUsers"></tbody></table></div>
-          <div class="addrow">
-            <input id="newUserName" placeholder="Full name">
-            <select id="newUserRole"><option value="tender">Tender</option><option value="purchasing">Purchasing</option><option value="topmanagement">Top Management</option><option value="admin">Admin</option></select>
-            <input id="newUserPass" placeholder="Password" style="max-width:130px">
-            <button class="btn solid" id="btnAddUser">Add</button>
-          </div>
-          <div style="font-size:11px;color:var(--ink-soft);margin-top:9px">🔔 Price-change alerts are broadcast to everyone only when edited by <b>Admin</b>, <b>Eng. Ahmed Ibrahim</b>, or <b>Purchasing</b>.</div>
-        </div></div>
       <div class="card"><div class="card-head collapsed" data-collapse><span class="ic">🛠️</span><h3>System</h3><span class="chev">▼</span></div>
         <div class="card-body">
           <div style="font-size:12px;color:var(--ink-soft);margin-bottom:11px">Version <b id="verSys"></b> · Cache <b id="cacheSys"></b> · Backend <b id="backendSys"></b></div>
@@ -560,6 +553,11 @@ input:disabled,select:disabled,textarea:disabled{background:#f5f7fa;color:var(--
 /* Mobica material price list seed — [category,name,unit,notes,usd_now,egp,supplier,usd_before] */
 window.SEED_DATA=[["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM MDF 18mm","m2","Mobica Standard tier",5.5,300,"imported",6],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM MDF 8mm","m2","Mobica Standard tier",3.8,190,"imported",3.8],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM MDF 18mm MR","m2","Mobica Standard tier",7.5,400,"imported",8],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM MDF 25mm","m2","Mobica Standard tier",9.8,490.00000000000006,"imported",9.8],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM MDF 18mm","m2","Local Market",7,0,"local suppliers egymix- snygroup",null],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM MDF 8mm","m2","Local Market",4,0,"local suppliers egymix- snygroup",null],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM MDF 18mm MR","m2","Local Market",10,0,"local suppliers - mdf raw chiness",null],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM MDF 18mm","m2","Local Market",9.4,700,"el khalil mobica color",14],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM MDF 8mm","m2","Local Market",6.7,420,"el khalil mobica color",8.4],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM MDF 18mm MR","m2","Local Market",9,800,"Kronospan",16],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","UV White MDF 18mm","m2","",21.8,1064.6599999999999,"local dist",21.2932],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","Acrylic MDF 18mm - 1.22*2.8","m2","",19,1064.6599999999999,"imported Tria",21.2932],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","Gloss MLM 18mm","m2","",21.8,1150,"local dist",23],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","Glossy - Pet  MDF 18","m2","",21.8,600,"local dist",12],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM Chip 18mm","m2","",5,250,"imported",5],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM Chip 18mm MR","m2","",6.5,325,"",6.5],["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM Chip 25mm","m2","",10.3,515,"imported",10.3],["Raw MDF & Chipboard","MDF 6mm","m2","",2,85.765,"local dist",1.7153],["Raw MDF & Chipboard","MDF 8mm","m2","",2.1877,109.385,"imported",2.1877],["Raw MDF & Chipboard","MDF 17mm","m2","",4.2262,211.31000000000003,"imported",4.2262],["Raw MDF & Chipboard","MDF 25mm","m2","",5.9664,298.32,"imported",5.9664],["Raw MDF & Chipboard","MDF 18mm MR","m2","1220*2440",6.0858,304.29,"imported",6.0858],["Raw MDF & Chipboard","MDF 8mm MR","m2","1220*2440",3.4,159.39000000000001,"imported",3.1878],["Raw MDF & Chipboard","Chip/m3 MR","m3","",248.7243,12436.215,"",248.7243],["Raw MDF & Chipboard","Chipboard 16mm","m2","",2.4,173.025,"imported",3.4605],["Raw MDF & Chipboard","Chipboard 24","m2","",3.6,259.54,"imported",5.1908],["Door Solid Cores & Components","Chipboard Core 38mm","Nr","0.9*2.15",24,1200,"local dist",24],["Door Solid Cores & Components","Chipboard Core 44mm","Nr","0.9*2.15",34,1328.01,"local dist",26.5602],["Plywood & Blockboard","Blockboard 18mm","m2","local",11.05,585,"local dist",11.7],["Plywood & Blockboard","Ply 3mm","m2","local",1.48,93.15,"imported",1.863],["Plywood & Blockboard","Ply 8mm","m2","local",3.8,211.60000000000002,"local dist",4.232],["Plywood & Blockboard","Ply 12mm","m2","local",5.8,303.6,"local dist",6.072],["Plywood & Blockboard","Ply 15mm","m2","local",5.66,345,"imported",6.9],["Plywood & Blockboard","Ply 17mm","m2","local",7.7,391,"local dist",7.82],["Plywood & Blockboard","Ply 22mm","m2","local",10,506.00000000000006,"local dist",10.120000000000001],["Plywood & Blockboard","Ply 3mm","m2","Finland-based (from Finland per-mm rate)",2.25,130.065,"local dist",2.6013],["Plywood & Blockboard","Ply 12mm","m2","Finland-based (from Finland per-mm rate)",7.25,400.2,"local dist",8.004],["Plywood & Blockboard","Ply 18mm","m2","Finland-based (from Finland per-mm rate)",10.15,600.3,"local dist Background",12.006],["Plywood & Blockboard","Marine Ply 3mm","m2","Marine-grade",2.61,130.5,"!",2.61],["Plywood & Blockboard","Marine Ply 12mm","m2","Marine-grade",10.44,522,"!",10.44],["Plywood & Blockboard","Marine Ply 18mm","m2","Marine-grade",15.66,783,"!",15.66],["Plywood & Blockboard","MLM Ply 17mm","m2","",10.7,588,"local dist",11.76],["Plywood & Blockboard","MLM Ply 24mm","m2","",15.1,756,"local dist",15.12],["Plywood & Blockboard","MLM Ply 8mm","m2","",6.8,495,"local dist",9.9],["Veneers & Paints","Veneer","m2","",2.15,150,"imported",3],["Veneers & Paints","Veneer - Sheraton","m2","Sheraton - COPV1V1510141000",2.15,191.75000000000003,"imported",3.8350000000000004],["Veneers & Paints","Veneer - Walnut / Qatar","m2","Walnut / Qatar - COWN1V1010110002B",2.15,191.75000000000003,"",3.8350000000000004],["Veneers & Paints","\u0643\u0628\u0633 Veneer","m2","hoor",0.9,75,"local dist",1.5],["Veneers & Paints","49","m2","birch",1.1,75,"local dist",1.5],["Veneers & Paints","50","m2","beech",1.4,75,"local dist",1.5],["Veneers & Paints","Paint Semi Gloss PU","m2","",10,550,"",11],["Veneers & Paints","Laqered Paint","m2","",9,500,"",10],["Veneers & Paints","Acrylic","","",14,700,"",14],["Veneers & Paints","teak oil","m2","",5,250,"local dist",5],["Veneers & Paints","Primer","m2","for Musky",1.2,80,"",1.6],["Glues & Consumables","Red Glue (Foam)","kg","Foam | * 0.2 kg/m2 ; usage factor",4.025,201.25000000000003,"",4.025],["Glues & Consumables","Glue Veneer","kg","* 0.25 kg/m2",2,100,"",2],["Glues & Consumables","Hot Glue (Lipping)","Lm","Lipp. | * 0.005 kg/Lm ; usage factor",5.7,285,"",5.7],["Packing","\u0643\u0631\u062a\u0648\u0646 \u062a\u063a\u0644\u064a\u0641","m2","PKCHT40901100460",0.34,17.5,"local dist",0.35],["Packing","\u0634\u064a\u062a \u062a\u063a\u0644\u064a\u0641 1\u0645\u0645 \u0628\u0627\u0644\u0645\u062a\u0631","Lm","PKPRW40907103010",0.045,2.5,"local dist",0.05],["Packing","\u0646\u0627\u064a\u0644\u0648\u0646 \u062a\u063a\u0644\u064a\u0641","m2","PKVEB40900200310",1.4,77,"local dist",1.54],["Packing","\u0633\u0644\u0648\u062a\u064a\u0628 \u0634\u0641\u0627\u0641 3.8*66  \u0645\u062a\u0631","Lm","PKPKRW40907101511",0.0052,0.5,"local dist",0.01],["Packing","\u0628\u0644\u0627\u0633\u062a\u064a\u0643 \u062a\u063a\u0644\u064a\u0641 \u0641\u0642\u0627\u0642\u064a\u0639 \u0639\u0631\u0636 100 \u0633\u0645","m2","PKVEB40900205320",0.048,2.5,"local dist",0.05],["Packing","\u0632\u0627\u0648\u064a\u0640\u0640\u0629 \u0641\u0648\u0645 5*5 \u0633\u0645","Nr","PKCHT4090110721007",0.15,8,"local dist",0.16],["HPL, Laminate & Formica","HPL 8mm Unilin","m2","",49.04,2452,"",49.04],["HPL, Laminate & Formica","HPL 13mm Green Lam","m2","",77.6,4300,"",86],["HPL, Laminate & Formica","HPL 13mm Unilin","m2","",62.56,3128,"",62.56],["HPL, Laminate & Formica","Laminate 0.55mm","m2","High grade",7.4865,374.32500000000005,"",7.4865],["HPL, Laminate & Formica","Local Formica 0.5mm","m2","",3.3,200,"",4],["Solid Surface & Countertops","Corian Sama12mm","m2","Sama Glacier White Corian 12mm",114,6290,"",125.8],["Solid Surface & Countertops","Corian Sama 6mm","m2","Sama Glacier White Corian 6mm",69.6,4100,"",82],["Solid Surface & Countertops","Corian Glue Tube","Nr","",11,600,"",12],["Solid Surface & Countertops","Corian Dupont 12mm","m2","",125.8,6290,"",125.8],["Solid Surface & Countertops","Corian Dupont 6mm","m2","",78,4100,"",82],["Solid Surface & trispa","HPL Trispa 19mm Chemical Resistance","m2","1860*2550",100,6877,"\u0627\u0644\u0628\u062f\u064a\u0644 \u0627\u0644\u0647\u0646\u062f\u064a",137.54],["Solid Surface & trispa","Epoxy 19/25","m2","1.56*2.55",110,7475,"local dist",149.5],["Natural Wood","Musky","m3","2 inch",330,16750,"",335],["Natural Wood","Beech","m3","2 inch",700,37500,"",750],["Natural Wood","Oak","m3","2 inch",1450,72500,"",1450],["Natural Wood","Pitch Pine","m3","2 inch",750,42500,"",850],["Natural Wood","Teak Africa","m3","2 inch",930,57500,"",1150],["Natural Wood","Teak Iroko","m3","2 inch",1720,83700,"",1674],["Natural Wood","Walnut","m3","2 inch",3700,225000,"",4500],["Natural Wood","Cheery","m3","2 inch",1700,85000,"\u063a\u064a\u0631 \u0645\u062a\u0648\u0641\u0631 \u0641\u064a \u0627\u0644\u0633\u0648\u0642",1700],["Natural Wood","Mahogany","m3","2 inch",1300,65000,"",1300],["Natural Wood","Maple","m3","2 inch",1300,65000,"\u063a\u064a\u0631 \u0645\u062a\u0648\u0641\u0631 \u0641\u064a \u0627\u0644\u0633\u0648\u0642",1300],["Natural Wood","Meranti","m3","2 inch",900,45000,"\u063a\u064a\u0631 \u0645\u062a\u0648\u0641\u0631 \u0641\u064a \u0627\u0644\u0633\u0648\u0642",900],["Metals & Steel Tubes","Steel","kg","",0.79,42.5,"Kandil 42.5 EzZ 39.5",0.85],["Metals & Steel Tubes","Galvanized Steel","kg","",0.9775,48.875,"",0.9775],["Metals & Steel Tubes","Steel Tube Local - Hot","kg","",1.02,46.75,"Turkey =0.92 USD/KG --GERMANY = 1.38 USD/KG-- Local =1.1 USD/KG",0.935],["Metals & Steel Tubes","Steel Tube Local - Cold","kg","",1.1,52.7,"",1.054],["Metals & Steel Tubes","Steel Tube Imported - Cold","kg","",1.04,59.5,"",1.19],["Metals & Steel Tubes","St. Steel","kg","",3.8,190.5,"",3.81],["Metals & Steel Tubes","Steel tube 10*10*1.4mm","Lm","",0.5718,28.59,"",0.5718],["Metals & Steel Tubes","Steel tube 10*40*1.4mm","","",null,null,"",null],["Metals & Steel Tubes","Steel tube 20*60mm","Lm","",2.02,103.96000000000001,"",2.0792],["Metals & Steel Tubes","Steel tube 30*30mm","Lm","",1.5,77.97,"Italy",1.5594],["Metals & Steel Tubes","Steel tube 50*50mm","Lm","",2.54,129.95000000000002,"",2.599],["Metals & Steel Tubes","Alum sheet","kg","",5.4,270,"",5.4],["Metals & Steel Tubes","Alum tube","kg","",5.4,270,"",5.4],["Metals & Steel Tubes","Brass","kg","",8.8,571.5,"",11.43],["Metals & Steel Tubes","Gold Bronze (PVD)","m2","",24,2250,"",45],["Metals & Steel Tubes","Paint powder","kg","",4.5,225,"",4.5],["Metals & Steel Tubes","Nickel","m2","",19,950,"",19],["Glass & Mirrors","2 Layer PVB","m2","",23,1150,"",23],["Glass & Mirrors","Flutted glass 5m Ribbed","m2","",65,3250,"",65],["Glass & Mirrors","glass 4mm","m2","feme 13.6 $",9.2,459.99999999999994,"",9.2],["Glass & Mirrors","glass 5m","m2","",11.1,555,"",11.1],["Glass & Mirrors","glass 6mm","m2","feme 19.7 $",12.2,610,"",12.2],["Glass & Mirrors","glass 8mm","m2","feme 24 $",16.7,835,"",16.7],["Glass & Mirrors","glass 10mm","m2","Grey 29.0 $",20.7,1035,"",20.7],["Glass & Mirrors","glass 12mm","m2","",32.85,1642.5,"",32.85],["Glass & Mirrors","glass 15mm","m2","",67.6,3379.9999999999995,"",67.6],["Glass & Mirrors","glass 20mm","m2","",97,4850,"",97],["Glass & Mirrors","glass 6mm \u0639\u0627\u0643\u0633 \u0628\u0631\u0648\u0646\u0632","m2","\u0639\u0627\u0643\u0633 \u0628\u0631\u0648\u0646\u0632 (\u0631\u064a\u0641\u0644\u0643\u062a\u0627\u0633\u0648\u0644)",19.7,985,"",19.7],["Glass & Mirrors","glass 6mm \u0639\u0627\u0643\u0633 \u0634\u0641\u0627\u0641","m2","\u0639\u0627\u0643\u0633 \u0634\u0641\u0627\u0641 (\u0633\u0648\u0644\u0627\u0631 \u0644\u0627\u064a\u062a/ \u0631\u064a\u0641\u0644\u0643\u062a\u0627\u0633\u0648\u0644) ; \u0633\u0648\u0644\u0627\u0631 \u0644\u0627\u064a\u062a / \u0631\u064a\u0641\u0644\u0643\u062a\u0627\u0633\u0648\u0644",14.55,727.5,"",14.55],["Glass & Mirrors","Glass Etch \u2013 Acid","m2","from Cost!Z7 text (19.6 $ Etch acid)",19.6,980.0000000000001,"",19.6],["Glass & Mirrors","Glass Etch \u2013 Heat","m2","from Cost!Z7 text (15.0 $ Etch heat)",15,750,"",15],["Glass & Mirrors","Glass Etch \u2013 Line","m2","from Cost!Z7 text (2.8 $ Etch Line)",2.8,140,"",2.8],["Glass & Mirrors","glass Film","m2","Degrede",9,450,"",9],["Glass & Mirrors","Glass Resin","m2","",25,1250,"",25],["Glass & Mirrors","Mirror 6mm","m2","",24,1200,"",24],["Glass & Mirrors","Mirror 4mm","m2","",20.5,1025,"",20.5],["Glass & Mirrors","Mirror protect Film","m2","",14.5,725,"",14.5],["Acrylic, PET & Lexan Sheets","Acrylic 3mm","m2","2.05*3.1 ; per m\u00b2 ; sheet = 99 $ / 6.35 m\u00b2",14.7,778.9150000000001,"",15.5783],["Acrylic, PET & Lexan Sheets","Acrylic 4mm (2.05\u00d73.1)","m2","2.05*3.1 ; per m\u00b2 ; sheet = 132 $ / 6.35 m\u00b2",20.09,1038.55,"",20.771],["Acrylic, PET & Lexan Sheets","Acrylic 4mm (2\u00d72.6)","m2","2*2.6 ; per m\u00b2 ; sheet = 107 $ / 5.20 m\u00b2",19.79,1028.845,"",20.5769],["Acrylic, PET & Lexan Sheets","Acrylic 5mm","m2","2.05*3.1 ; per m\u00b2 ; sheet = 165 $ / 6.35 m\u00b2",25.08,1298.19,"Need to Update",25.9638],["Acrylic, PET & Lexan Sheets","Acrylic 6mm","m2","",29.82,1557.8300000000002,"",31.1566],["Acrylic, PET & Lexan Sheets","Acrylic 10mm","m2","per m\u00b2 ; sheet = 325 $ / 6.35 m\u00b2",49.26,2557.04,"Need to Update",51.1408],["Acrylic, PET & Lexan Sheets","Lexan 5mm","m2","2.1*5.8 ; per m\u00b2 ; sheet = 72.8 $ / 12.18 m\u00b2",5.977,298.85,"",5.977],["Acrylic, PET & Lexan Sheets","Lexan 10mm","m2","2.1*5.8 ; per m\u00b2 ; sheet = 98.5 $ / 12.18 m\u00b2",8.087,404.34999999999997,"",8.087],["Acrylic, PET & Lexan Sheets","PET 5mm Corrugated","m2","per m\u00b2 ; sheet = 59.8 $ / 2.76 m\u00b2",17.717391304347828,1083.335,"Need to Update",21.6667],["Acrylic, PET & Lexan Sheets","PET 9mm","m2","per m\u00b2 ; sheet = 28.6 $ / 2.95 m\u00b2",9.33,484.34999999999997,"Need to Update",9.687],["Acrylic, PET & Lexan Sheets","PET 12mm","m2","per m\u00b2 ; sheet = 39 $ / 2.95 m\u00b2",13.21,660.48,"",13.2096],["Marble & Granite","Calacuta Gold","m2","",220,12500,"",250],["Marble & Granite","Calacuta Viola","m2","",220,7250,"",145],["Marble & Granite","Carara","m2","",130,6000,"",120],["Marble & Granite","Double Black","m2","",150,7750,"",155],["Marble & Granite","Emprador","m2","",125,6250,"",125],["Marble & Granite","Gray Granit - company","m2","",45,2250,"",45],["Marble & Granite","Marble Crema","m2","",120,6000,"",120],["Marble & Granite","Marble Nebty","m2","",180,9000,"",180],["Marble & Granite","Marble Quarterz","m2","",200,10000,"",200],["Marble & Granite","White Bianco","m2","",230,11500,"",230],["Marble & Granite","Marble Table Kitchen / LM","m2","Add",23,1150,"",23],["Marble & Granite","Marble Table Round / Piece","m2","second value also listed: 40 $ (Double Edge)",23,1150,"",23],["Marble & Granite","Marble Table Squared / Piece","m2","second value also listed: 30 $ (Double Edge)",16,800,"",16],["Fabrics & Leather","Fabric","Lm","Koya",2.3,114.99999999999999,"",2.3],["Fabrics & Leather","Fabric","Lm","Indoor ( Projects )",4.5,225,"Nage7 prices",4.5],["Fabrics & Leather","Fabric","Lm","Outdoor",6.5,325,"Nage7 prices",6.5],["Fabrics & Leather","H Fabric","Lm","",6.5,325,"",6.5],["Fabrics & Leather","Fabric Pugii","Lm","",15.87,793.5,"",15.87],["Fabrics & Leather","Leather","m2","",24.2,1045,"",20.9],["Fabrics & Leather","Sky - Artifitial Leather","Lm","",2.6,170,"imported",3.4],["Fabrics & Leather","Sky F","Lm","",3.9,300,"imported",6],["Fabrics & Leather","Gabardine","Lm","",1.6,80,"",1.6],["Foam, Fiber & Padding","Fiber","kg","Dens. 0.02 /Kg",1.8,95,"",1.9],["Foam, Fiber & Padding","Flein 2mm","kg","",5,250,"",5],["Foam, Fiber & Padding","Foam D30 S","m3","",122,6100,"",122],["Foam, Fiber & Padding","Foam D28 F","m3","",107,5350,"",107],["Foam, Fiber & Padding","Foam HR","m3","",144,7200,"",144],["Foam, Fiber & Padding","Felt","kg","Dens. 0.2 /Kg",4,290,"",5.8],["Insulation (Rock Wool)","Rock wall 5cm - 50Kg/m3","kg","",5.18,300,"Need to Update",6],["Insulation (Rock Wool)","Rock wall 5cm - 100Kg/m3","kg","",10.36,600,"Need to Update",12]];
 </script>
+<script>
+/* Mobica accessories price list seed — same columns as materials */
+window.ACC_SEED_DATA=[["Hardware \u2013 Runners, Drawers & Sliding","Cabinet Sliding","Nr","Mobica Standard",3.6187,180.935,"",3.6187],["Hardware \u2013 Runners, Drawers & Sliding","Cabinet Sliding \u2013 2 Leaves","Nr","Mobica Standard",35.6807,1784.035,"",35.6807],["Hardware \u2013 Runners, Drawers & Sliding","Cabinet Sliding \u2013 3 Leaves","Nr","Mobica Standard",43.5773,2178.8650000000002,"",43.5773],["Hardware \u2013 Runners, Drawers & Sliding","Hafele step 40cm","Nr","",25,1250,"",25],["Hardware \u2013 Runners, Drawers & Sliding","Hafele Two step 40cm","Nr","",37.5,1875,"",37.5],["Hardware \u2013 Runners, Drawers & Sliding","Kitchen Runner","Nr","",9.48,474,"",9.48],["Hardware \u2013 Runners, Drawers & Sliding","M Roller 45","Nr","",1.8515,92.575,"",1.8515],["Hardware \u2013 Runners, Drawers & Sliding","Muzzin 45cm+ push","Nr","",14,700,"",14],["Hardware \u2013 Runners, Drawers & Sliding","Muzzin one step 30cm","Nr","",5.5,275,"",5.5],["Hardware \u2013 Runners, Drawers & Sliding","Muzzin one step 35cm","Nr","",8,400,"",8],["Hardware \u2013 Runners, Drawers & Sliding","Push for Runner","Nr","",6.5,325,"",6.5],["Hardware \u2013 Runners, Drawers & Sliding","Roller 35","Nr","",1.3225,66.125,"",1.3225],["Hardware \u2013 Runners, Drawers & Sliding","Roller 45","Nr","",1.587,79.35,"",1.587],["Hardware \u2013 Runners, Drawers & Sliding","Runner 456 FGV","Nr","T2 - T3 | FGV",2.369,118.45000000000002,"",2.369],["Hardware \u2013 Runners, Drawers & Sliding","Runner  Alca 395","Nr","",4.745,237.25,"",4.745],["Hardware \u2013 Runners, Drawers & Sliding","Runner Finiza 40","Nr","Mobica Standard ; source lists Runner 40/50 Finiza with two prices",8.4333,421.66499999999996,"",8.4333],["Hardware \u2013 Runners, Drawers & Sliding","Runner Finiza 50","Nr","Mobica Standard ; source lists Runner 40/50 Finiza with two prices",9.5067,475.33500000000004,"",9.5067],["Hardware \u2013 Runners, Drawers & Sliding","Runner \u062a\u0644\u0633\u0643\u0648\u0628\u064a","Nr","350",1.5,75,"",1.5],["Hardware \u2013 Runners, Drawers & Sliding","\u0625\u0643\u0633\u0633\u0648\u0627\u0631 \u0627\u0644\u062f\u0644\u0641 \u0627\u0644\u062c\u0631\u0627\u0631","Nr","",30,1500,"",30],["Hardware \u2013 Runners, Drawers & Sliding","\u0627\u0644\u062f\u0644\u0641 \u0627\u0644\u062c\u0631\u0627\u0631  60 Kg","Nr","",30,1500,"",30],["Hardware \u2013 Runners, Drawers & Sliding","\u0627\u0644\u062f\u0644\u0641 \u0627\u0644\u062c\u0631\u0627\u0631  75-90 Kg","Nr","",60,3000,"",60],["Hardware \u2013 Runners, Drawers & Sliding","\u062c\u0633\u0645 \u062f\u0631\u062c \u062e\u0634\u0628\u064a","Nr","",1.2005,60.02499999999999,"",1.2005],["Hardware \u2013 Hinges","Hinge","Nr","Mobica Standard",0.644,32.2,"",0.644],["Hardware \u2013 Hinges","Hinge 110 Kolity","Nr","",0.378,18.9,"",0.378],["Hardware \u2013 Hinges","Hinge 165 FGV & Hettich","Nr","FGV -1.16*1.5 ; -1.16*1.5 (source text)",2.5,125,"",2.5],["Hardware \u2013 Hinges","Hinge - Hafele","Nr","",3.5,175,"",3.5],["Hardware \u2013 Handles & Locks","Alum Handle 150mm","Nr","",2.47,123.50000000000001,"",2.47],["Hardware \u2013 Handles & Locks","Hafele handle","Nr","",4.6287,231.435,"",4.6287],["Hardware \u2013 Handles & Locks","Hafele lock","Nr","",4.4965,224.82500000000002,"",4.4965],["Hardware \u2013 Handles & Locks","Handle Alum Lm","Lm","",2.99,149.5,"",2.99],["Hardware \u2013 Handles & Locks","Handle Lock Cyber","Nr","",1.7325,86.625,"",1.7325],["Hardware \u2013 Handles & Locks","Handle Siro","Nr","",0.3,15,"",0.3],["Hardware \u2013 Handles & Locks","Handle StSt 128mm","Nr","",5.6202,281.01,"",5.6202],["Hardware \u2013 Handles & Locks","Kitchen Handle 60cm","Nr","",5.33,266.5,"",5.33],["Hardware \u2013 Handles & Locks","Lock MK Cyber","Nr","",1.26,63,"",1.26],["Hardware \u2013 Handles & Locks","Lock \u0633\u0628\u0644\u064a\u0648\u0646\u0629 Cyber","Nr","",1.5225,76.125,"",1.5225],["Hardware \u2013 Handles & Locks","Lock \u0644\u0633\u0627\u0646","Nr","Lock \u0644\u0633\u0627\u0646 ; code LKLKIV40502000550",1.8375,91.875,"",1.8375],["Hardware \u2013 Handles & Locks","Sabliona Center","Nr","",0.8,40,"",0.8],["Hardware \u2013 Handles & Locks","\u0643\u0627\u0644\u0648\u0646 \u062e\u0637\u0627\u0641","Nr","",23,1150,"",23],["Hardware \u2013 Handles & Locks","\u0645\u0642\u0628\u0636 \u0643\u0627\u0644\u0648\u0646 \u0633\u0628\u0644\u064a\u0648\u0646\u0629 Cyber","Nr","",1.7325,86.625,"",1.7325],["Hardware \u2013 Fittings & Accessories","4* Kitchen plastic legs","Item","source text: =0.62*1.15*4*1.15=3.28$",1.3,65,"",1.3],["Hardware \u2013 Fittings & Accessories","Castors","Item","",0.455,22.75,"",0.455],["Hardware \u2013 Fittings & Accessories","Cloth Rail","Lm","4.8 $",1.1917,59.585,"",1.1917],["Hardware \u2013 Fittings & Accessories","Connect Screw","Nr","",0.1105,5.525,"",0.1105],["Hardware \u2013 Fittings & Accessories","D Conector","Nr","",0.9,45,"",0.9],["Hardware \u2013 Fittings & Accessories","Filing Holder","Nr","",1.95,97.5,"",1.95],["Hardware \u2013 Fittings & Accessories","Grommet 8*8","Nr","",1.0625,53.125,"",1.0625],["Hardware \u2013 Fittings & Accessories","Grommet 13*40","Nr","",3.7242,186.21,"",3.7242],["Hardware \u2013 Fittings & Accessories","Grommet Soft 13*30","Nr","",2.9323,146.615,"",2.9323],["Hardware \u2013 Fittings & Accessories","Kitchen Upper Hang","Item","source text: =1.82*$B$1*$A$2=2.41$",1.625,81.25,"",1.625],["Hardware \u2013 Fittings & Accessories","Level 30*30","Nr","",0.12,6,"",0.12],["Hardware \u2013 Fittings & Accessories","Level 50*50","Nr","",0.15,7.5,"",0.15],["Hardware \u2013 Fittings & Accessories","Pencil Holder","Nr","",2.34,117,"",2.34],["Hardware \u2013 Fittings & Accessories","Plastic Stoper","Nr","",0.91,45.5,"",0.91],["Hardware \u2013 Fittings & Accessories","Push for Leaves","Nr","",5,250,"",5],["Hardware \u2013 Fittings & Accessories","S Conector","Nr","",0.74,37,"",0.74],["Hardware \u2013 Fittings & Accessories","Skirting kitchen","Nr","source text: =1.3*1.15*1.15=1.72 (source text)",1.67,83.5,"",1.67],["Hardware \u2013 Fittings & Accessories","\u0633\u0643\u0627\u0643 \u0628\u0627\u0644\u0625\u0643\u0633\u0633\u0648\u0627\u0631","Nr","",0.84,42,"",0.84],["Electrical & Lighting","Led Light","Lm","",2,100,"",2],["Electrical & Lighting","Aluminum profile","Lm","6M",3.2,160,"",3.2],["Electrical & Lighting","\u0628\u0631\u064a\u0632\u0629 UPS","Nr","",4,200,"",4],["Electrical & Lighting","\u0628\u0631\u064a\u0632\u0629 \u0628\u0627\u0648\u0631","Nr","",3.5,175,"",3.5],["Electrical & Lighting","\u0628\u0631\u064a\u0632\u0629 \u0639\u0627\u062f\u064a\u0629","Nr","",0.8,40,"",0.8],["Electrical & Lighting","\u0634\u0627\u0633\u064a\u0629","Nr","",1.5,75,"",1.5],["Electrical & Lighting","\u0644\u0642\u0645\u0629 \u062a\u0644\u064a\u0641\u0648\u0646","Nr","",1.5,75,"",1.5],["Electrical & Lighting","\u0644\u0642\u0645\u0629 \u0646\u062a","Nr","",11,550,"",11],["Electrical & Lighting","\u0648\u0634 \u0634\u0627\u0633\u064a\u0629","Nr","",1.5,75,"",1.5],["Electrical & Lighting","Trans 37","Nr","",4.5,225,"",4.5],["Electrical & Lighting","Trans 100","Nr","",6,300,"",6],["Electrical & Lighting","Trans 150","Nr","",7,350,"",7],["Electrical & Lighting","Trans 200","Nr","",8.5,425,"",8.5],["Sanitary & Kitchen Fittings","Drain Siphon","Nr","",22,1100,"",22],["Sanitary & Kitchen Fittings","Mixer Ideal","Nr","",70,3500,"",70],["Sanitary & Kitchen Fittings","St.Steel Basin 48*43","Nr","",80,4000,"",80],["Sanitary & Kitchen Fittings","St.Steel Basin 56*44","Nr","",100,5000,"",100],["Chair Components & Mechanisms","4 Castors","Item","",1.768,88.4,"",1.768],["Chair Components & Mechanisms","ABS","Nr","",3.76,188,"",3.76],["Chair Components & Mechanisms","Aluminum base \u0627\u064a\u0644\u064a\u062a","Nr","",11.7,585,"",11.7],["Chair Components & Mechanisms","Doris mechanism","Nr","code ACCCHD-85BA-20-005",11.96,598,"",11.96],["Chair Components & Mechanisms","Inverse chair Gaslift","Nr","code ACCCHD-INVERS0004",3.25,162.5,"",3.25],["Chair Components & Mechanisms","Inverse Mechanism","Nr","code ACCCHD-INVERS0007",9.75,487.5,"",9.75],["Chair Components & Mechanisms","Multi Function mechanism with slidersTesla","Nr","code ACCCHD-TESLA0004",17.94,897.0000000000001,"",17.94],["Chair Components & Mechanisms","\u0623\u0643\u0633 \u0643\u0631\u0633\u064a \u0625\u064a\u0644\u064a\u062a","Nr","code ACCCHD-ELIT00013",2.405,120.24999999999999,"",2.405],["Chair Components & Mechanisms","\u0627\u0643\u0633 \u0643\u0631\u0633\u064a \u0627\u0633\u0628\u0627\u0646\u064a","Nr","code ACCCHD50101101424",2.509,125.44999999999999,"",2.509],["Chair Components & Mechanisms","\u0627\u0643\u0633 \u0644\u0632\u0648\u0645 \u0627\u0644\u0637\u0627\u0631\u0647","Nr","",9.165,458.24999999999994,"",9.165],["Chair Components & Mechanisms","\u0627\u0643\u0633 \u0647\u064a\u062f\u0631\u0648\u0644\u064a\u0643 \u0642\u0644\u0627\u0628","Nr","\u0627\u0633\u0628\u0627\u0646\u064a + \u0628\u0627\u0628\u0627\u0631",2.496,124.8,"",2.496],["Chair Components & Mechanisms","\u0627\u0643\u0633 \u0647\u064a\u062f\u0631\u0648\u0644\u064a\u0643 \u0642\u0644\u0627\u0628","Nr","code CXCXO40500030331",2.457,122.85,"",2.457],["Chair Components & Mechanisms","\u0627\u0643\u0633 \u0647\u064a\u062f\u0631\u0648\u0644\u064a\u0643 \u0644\u0644\u0646\u062c\u0645\u0647 \u0627\u0644\u0639\u0627\u0644\u064a\u0647","Nr","code CXCXO40500030344",2.405,120.24999999999999,"",2.405],["Chair Components & Mechanisms","\u0637\u0642\u0645 \u0630\u0631\u0627\u0639 \u0628\u0627\u0628\u0627\u0631 \u0628\u0644\u0627\u0633\u062a\u064a\u0643","Item","",4.875,243.75,"",4.875],["Chair Components & Mechanisms","\u0637\u0642\u0645 \u0630\u0631\u0627\u0639 \u0643\u0631\u0633\u064a \u0625\u0633\u0628\u0627\u0646\u064a","Item","",9.295,464.75,"",9.295],["Chair Components & Mechanisms","\u0645\u0627\u0643\u064a\u0646\u0629 \u0628\u064a\u062a\u0627","Nr","",14.3,715,"",14.3],["Chair Components & Mechanisms","\u0645\u0627\u0643\u064a\u0646\u0629 \u0643\u0631\u0633\u0649 \u0628\u064a\u062a\u0627","Nr","code ACCCHS40500800110",15.6,780,"",15.6],["Chair Components & Mechanisms","\u0645\u0627\u0643\u064a\u0646\u0629 \u0643\u0631\u0633\u0649 \u062a\u0648\u0628 \u0641\u064a\u0643\u0633","Nr","code CXCXO40500030415",2.34,117,"",2.34],["Chair Components & Mechanisms","\u0645\u0627\u0643\u064a\u0646\u0629 \u0643\u0631\u0633\u064a \u0623\u0633\u0628\u0627\u0646\u064a","Nr","code ACCCHS40500800111",12.35,617.5,"",12.35],["Chair Components & Mechanisms","\u0645\u0627\u0643\u064a\u0646\u0629 \u0643\u0631\u0633\u064a \u0625\u0644\u064a\u062c\u0627\u0646\u062a","Nr","",10.777,538.8499999999999,"",10.777],["Chair Components & Mechanisms","\u0645\u0627\u0643\u064a\u0646\u0629 \u0647\u064a\u062f\u0631\u0648\u0644\u064a\u0643 \u0642\u0644\u0627\u0628","Nr","",3.77,188.5,"",3.77],["Chair Components & Mechanisms","\u0645\u0627\u0643\u064a\u0646\u0647 \u0643\u0631\u0633\u0649 \u0644\u0648\u0631\u062f\u0648","Nr","",61.6285,3081.425,"",61.6285],["Chair Components & Mechanisms","\u0645\u0627\u0643\u064a\u0646\u0647 \u0643\u0631\u0633\u0649 \u0644\u0648\u0631\u062f\u0648","Nr","code ACCCHS40600207211",53.59,2679.5,"",53.59],["Chair Components & Mechanisms","\u0645\u064a\u0643\u0627\u0646\u064a\u0632\u0645 \u0627\u064a\u0644\u064a\u062a","Nr","code ACCCHD-ELIT00006",7.8,390,"",7.8],["Chair Components & Mechanisms","\u0646\u062c\u0645\u0629 \u062e\u0645\u0627\u0633\u064a\u0629 \u0628\u0644\u0627\u0633\u062a\u064a\u0643 \u0635\u063a\u064a\u0631\u0647","Nr","",5.785,289.25,"",5.785],["Chair Components & Mechanisms","\u0646\u062c\u0645\u0629 \u062e\u0645\u0627\u0633\u064a\u0629 \u0628\u0644\u0627\u0633\u062a\u064a\u0643 \u0643\u0628\u064a\u0631\u0647","Nr","",7.215,360.75,"",7.215],["Chair Components & Mechanisms","\u0646\u062c\u0645\u0629 \u0645\u0639\u062f\u0646\u064a\u0629 \u0628\u0631\u0627\u062f\u0648","Nr","",18.515,925.75,"",18.515],["Chair Components & Mechanisms","\u0627\u0631\u062a\u064a\u0644\u0648\u0646","kg","1.2 kg/m3",5,250,"",5],["Chair Components & Mechanisms","\u0627\u0644\u062a\u0641\u0644\u0648\u0646","kg","2.2 kg/m3",18,900,"",18],["Chair Components & Mechanisms","\u0627\u064a\u0633\u0648","kg","",6,300,"",6],["Chair Components & Mechanisms","\u0628\u0644\u064a\u0648\u0644","kg","",6,300,"",6],["Chair Components & Mechanisms","\u0628\u0648\u0644\u064a \u0627\u0645\u064a\u062f","kg","",5.96,298,"",5.96],["Chair Components & Mechanisms","\u0628\u0648\u0644\u064a \u0628\u0631\u0648\u0628\u0644\u064a\u0646","kg","",2.9,145,"",2.9],["Chair Components & Mechanisms","\u0631\u0634","kg","",6.4,320,"",6.4],["CNC & Machining (per Lm)","CNC Groove 5*5","Lm","per Lm",0.15,7.5,"",0.15],["CNC & Machining (per Lm)","CNC Islamic V","Lm","per Lm",0.12,6,"",0.12],["CNC & Machining (per Lm)","CNC Slots","Lm","per Lm",0.3,15,"",0.3]];
+window.ACC_CATEGORIES=["Hardware – Runners, Drawers & Sliding", "Hardware – Hinges", "Hardware – Handles & Locks", "Hardware – Fittings & Accessories", "Electrical & Lighting", "Sanitary & Kitchen Fittings", "Chair Components & Mechanisms", "CNC & Machining (per Lm)"];
+</script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 <script>
@@ -567,8 +565,8 @@ window.SEED_DATA=[["Melamine-Faced Boards (MLM MDF / MLM Chipboard)","MLM MDF 18
    MobiMate — Mobica Material Price List
    MT-Track architecture: single-file PWA + Firebase RTDB + SW cache ver
    ===================================================================== */
-const APP_VERSION = 'v1.03';
-const CACHE_NAME  = 'mobimate-v2026.07.27-3';
+const APP_VERSION = 'v1.04';
+const CACHE_NAME  = 'mobimate-v2026.07.27-4';
 
 const FIREBASE_CONFIG = {
   apiKey: "PASTE_API_KEY",
@@ -589,12 +587,13 @@ function alertsOnPriceChange(){ if(effRole()==='admin'||effRole()==='purchasing'
 const S = {
   user:null, role:null, viewAs:null,
   materials:{}, deleted:{}, activity:{}, chats:{}, notifs:{},
-  lists:{categories:[],units:[],currencies:[],suppliers:[],statuses:[],tenderEngineers:[],purchasingEngineers:[],topManagement:[]},
+  lists:{categories:[],accCategories:[],units:[],currencies:[],suppliers:[],statuses:[],tenderEngineers:[],purchasingEngineers:[],topManagement:[]},
   fx:50, users:[], undoStack:[], sort:{key:'name',dir:1},
   online:false, backend:'local', ready:false, curPage:'dash', notifsOn:true
 };
 const DEFAULT_LISTS = {
   categories:["Melamine-Faced Boards (MLM MDF / MLM Chipboard)", "Raw MDF & Chipboard", "Door Solid Cores & Components", "Plywood & Blockboard", "Veneers & Paints", "Glues & Consumables", "Packing", "HPL, Laminate & Formica", "Solid Surface & Countertops", "Solid Surface & trispa", "Natural Wood", "Metals & Steel Tubes", "Glass & Mirrors", "Acrylic, PET & Lexan Sheets", "Marble & Granite", "Fabrics & Leather", "Foam, Fiber & Padding", "Insulation (Rock Wool)"],
+  accCategories:["Hardware – Runners, Drawers & Sliding", "Hardware – Hinges", "Hardware – Handles & Locks", "Hardware – Fittings & Accessories", "Electrical & Lighting", "Sanitary & Kitchen Fittings", "Chair Components & Mechanisms", "CNC & Machining (per Lm)"],
   units:["m2","m3","Lm","EA","Kg","sheet","set","roll","L","pcs"],
   currencies:["USD","EGP","AED","SAR","EUR"],
   suppliers:["—"],
@@ -665,7 +664,13 @@ const catIcon = n => { const s=n.toLowerCase();
   if(s.includes('metal')||s.includes('steel'))return '🔩'; if(s.includes('glass')||s.includes('mirror'))return '🪟';
   if(s.includes('acrylic')||s.includes('pet')||s.includes('lexan'))return '💠'; if(s.includes('marble')||s.includes('granite'))return '⬜';
   if(s.includes('fabric')||s.includes('leather'))return '🧵'; if(s.includes('foam')||s.includes('fiber')||s.includes('pad'))return '🛋️';
-  if(s.includes('insul')||s.includes('wool'))return '🧯'; return '📄'; };
+  if(s.includes('insul')||s.includes('wool'))return '🧯';
+  if(s.includes('runner')||s.includes('drawer')||s.includes('sliding'))return '🛝';
+  if(s.includes('hinge'))return '🔗'; if(s.includes('handle')||s.includes('lock'))return '🔒';
+  if(s.includes('fitting')||s.includes('accessor'))return '🧩'; if(s.includes('electric')||s.includes('light'))return '💡';
+  if(s.includes('sanitary')||s.includes('kitchen fitting'))return '🚰'; if(s.includes('chair')||s.includes('mechanism'))return '💺';
+  if(s.includes('cnc')||s.includes('machin'))return '⚙️'; if(s.includes('hardware'))return '🔩';
+  return '📄'; };
 
 function toast(msg,type='',actionLabel,actionFn,ms=3800){
   const t=document.createElement('div'); t.className='toast '+type;
@@ -875,7 +880,7 @@ function bindData(){
   DB.on('activity',  v=>{ S.activity=v||{};  if(S.ready) sched('act',()=>{ renderActivity(); renderDashActivity() }) });
   DB.on('chats',     v=>{ S.chats=v||{};     if(S.ready) sched('chat',()=>{ renderCurrentCategory(); refreshOpenChat() }) });
   DB.on('lists', v=>{ S.lists=Object.assign({},DEFAULT_LISTS,v||{});
-    ['categories','units','currencies','suppliers','statuses','tenderEngineers','purchasingEngineers','topManagement'].forEach(k=>{ if(!Array.isArray(S.lists[k])) S.lists[k]=DEFAULT_LISTS[k].slice() });
+    ['categories','accCategories','units','currencies','suppliers','statuses','tenderEngineers','purchasingEngineers','topManagement'].forEach(k=>{ if(!Array.isArray(S.lists[k])) S.lists[k]=DEFAULT_LISTS[k].slice() });
     if(S.ready){ buildTabs(); buildCategoryPages(); renderLists(); } });
   DB.on('fx', v=>{ if(typeof v==='number'&&v>0){ S.fx=v; } if(S.ready){ $('#fxShow')&&($('#fxShow').textContent=S.fx); $('#fxInput')&&($('#fxInput').value=S.fx); sched('fx',renderAll); } });
   DB.on('users', v=>{ if(Array.isArray(v)&&v.length){ S.users=v; localStorage.setItem('MOBIMATE_USERS',JSON.stringify(v)); if(S.ready) renderUsers(); } });
@@ -889,22 +894,30 @@ function bindData(){
 
 /* ============================ COMPUTE ============================ */
 const matList = () => Object.values(S.materials||{});
+const domainOf = m => m.domain==='accessory'?'accessory':'material';
+const catsFor = domain => (domain==='accessory'? (S.lists.accCategories||[]) : (S.lists.categories||[]));
 const catOf = m => m.category||'Uncategorized';
 const priceUSD = m => num(m.price);
 const priceEGP = m => num(m.price)*num(S.fx);
 function delta(m){ const b=num(m.baseline); if(!b) return 0; return (num(m.price)-b)/b*100; }
 function moveOf(m){ const d=delta(m); return d<-0.001?'down':(d>0.001?'up':'flat'); }
 function unread(m){ const th=S.chats[m.id]; if(!th)return 0; const seen=(S.user&&m.seen&&m.seen[keyName(S.user.name)])||''; return Object.values(th).filter(x=>x.at>seen && x.by!==S.user?.name).length; }
-function matsInCat(c){ return matList().filter(m=>catOf(m)===c); }
+function itemsIn(domain,c){ return matList().filter(m=>domainOf(m)===domain && catOf(m)===c); }
+function matsInCat(c){ return itemsIn('material',c); }
+function accsInCat(c){ return itemsIn('accessory',c); }
+const pageKey = domain => domain==='accessory'?'acc':'cat';
+const pageId = (domain,c) => 'page-'+pageKey(domain)+'-'+slug(c);
 
 /* ============================ TABS + PAGES ============================ */
+const DD={ material:{btn:'catBtn',menu:'catMenu',label:'Material Categories',icon:'📂',add:'＋ Add Material'},
+           accessory:{btn:'accBtn',menu:'accMenu',label:'Accessories Categories',icon:'🧰',add:'＋ Add Accessory'} };
+function curDomainCat(){ const c=S.curPage; if(c.startsWith('cat:'))return['material',c.slice(4)]; if(c.startsWith('acc:'))return['accessory',c.slice(4)]; return[null,'']; }
 function buildTabs(){
-  const cats=S.lists.categories||[];
-  const t=$('#tabs'); const cur=S.curPage;
-  const onCat=cur.startsWith('cat:'); const curCat=onCat?cur.slice(4):'';
+  const t=$('#tabs'); const cur=S.curPage; const [cd,cc]=curDomainCat();
   let html=`<button class="tab ${cur==='dash'?'active':''}" data-page="dash"><span class="ic">🏠</span>Dashboard</button>`;
-  html+=`<div class="cat-dd"><button class="tab cat-btn" id="catBtn"><span class="ic">📂</span>${onCat?esc(shortCat(curCat)):'Material Categories'}<span class="chev">▾</span></button>
-    <div class="cat-menu hidden" id="catMenu"></div></div>`;
+  ['material','accessory'].forEach(dom=>{ const d=DD[dom]; const on=cd===dom;
+    html+=`<div class="cat-dd"><button class="tab cat-btn ${dom==='accessory'?'acc':''}" id="${d.btn}"><span class="ic">${d.icon}</span>${on?esc(shortCat(cc)):d.label}<span class="chev">▾</span></button>
+      <div class="cat-menu hidden" id="${d.menu}"></div></div>`; });
   html+=`<button class="tab ${cur==='activity'?'active':''}" data-page="activity"><span class="ic">🕘</span>Activity</button>`;
   if(isAdmin()){
     html+=`<button class="tab sys ${cur==='bin'?'active':''}" data-page="bin"><span class="ic">🗑️</span>Bin<span class="cnt">${Object.keys(S.deleted||{}).length}</span></button>`;
@@ -912,50 +925,56 @@ function buildTabs(){
   }
   t.innerHTML=html;
   t.querySelectorAll('.tab[data-page]').forEach(el=>el.onclick=()=>go(el.dataset.page));
-  const btn=$('#catBtn'); if(btn){ btn.classList.toggle('active',onCat); btn.onclick=e=>{ e.stopPropagation(); toggleCatMenu(); }; }
-  buildCatMenu();
+  ['material','accessory'].forEach(dom=>{ const b=$('#'+DD[dom].btn); if(b){ b.classList.toggle('active',cd===dom); b.onclick=e=>{ e.stopPropagation(); toggleDD(dom); }; } });
+  buildDomainMenu('material'); buildDomainMenu('accessory');
 }
-function buildCatMenu(){
-  const menu=$('#catMenu'); if(!menu)return; const cats=S.lists.categories||[]; const cur=S.curPage;
-  const curCat=cur.startsWith('cat:')?cur.slice(4):'';
+function buildDomainMenu(domain){
+  const d=DD[domain]; const menu=$('#'+d.menu); if(!menu)return; const cats=catsFor(domain); const [cd,cc]=curDomainCat(); const pk=pageKey(domain);
   menu.innerHTML=`<div class="cm-item home" data-go="dash"><span class="ic">🏠</span>Dashboard<span class="cnt">home</span></div>
-    <div class="cm-head">Material Categories · ${cats.length}</div>`+
-    cats.map(c=>`<div class="cm-item ${c===curCat?'active':''}" data-go="cat:${esc(c)}"><span class="ic">${catIcon(c)}</span>${esc(shortCat(c))}<span class="cnt">${matsInCat(c).length}</span></div>`).join('');
-  menu.querySelectorAll('.cm-item').forEach(el=>el.onclick=()=>{ closeCatMenu(); go(el.dataset.go); });
+    <div class="cm-head">${esc(d.label)} · ${cats.length}</div>`+
+    cats.map(c=>`<div class="cm-item ${(cd===domain&&c===cc)?'active':''}" data-go="${pk}:${esc(c)}"><span class="ic">${catIcon(c)}</span>${esc(shortCat(c))}<span class="cnt">${itemsIn(domain,c).length}</span></div>`).join('');
+  menu.querySelectorAll('.cm-item').forEach(el=>el.onclick=()=>{ closeDD(domain); go(el.dataset.go); });
 }
-function toggleCatMenu(){ const m=$('#catMenu'),b=$('#catBtn'); if(!m)return; const willOpen=m.classList.contains('hidden');
-  if(willOpen){ buildCatMenu(); m.classList.remove('hidden'); b&&b.classList.add('open'); positionCatMenu(); }
+function toggleDD(domain){ const d=DD[domain]; const m=$('#'+d.menu),b=$('#'+d.btn); if(!m)return;
+  ['material','accessory'].forEach(o=>{ if(o!==domain) closeDD(o); });
+  const willOpen=m.classList.contains('hidden');
+  if(willOpen){ buildDomainMenu(domain); m.classList.remove('hidden'); b&&b.classList.add('open'); positionDD(domain); }
   else { m.classList.add('hidden'); b&&b.classList.remove('open'); } }
-function positionCatMenu(){ const m=$('#catMenu'),b=$('#catBtn'); if(!m||!b||m.classList.contains('hidden'))return;
+function positionDD(domain){ const d=DD[domain]; const m=$('#'+d.menu),b=$('#'+d.btn); if(!m||!b||m.classList.contains('hidden'))return;
   const r=b.getBoundingClientRect(); const w=Math.min(window.innerWidth*0.94,360);
   let left=r.left; if(left+w>window.innerWidth-8) left=window.innerWidth-8-w; if(left<8)left=8;
   m.style.left=left+'px'; m.style.top=(r.bottom+8)+'px'; m.style.width=w+'px'; }
-function closeCatMenu(){ const m=$('#catMenu'),b=$('#catBtn'); m&&m.classList.add('hidden'); b&&b.classList.remove('open'); }
+function closeDD(domain){ const d=DD[domain]; const m=$('#'+d.menu),b=$('#'+d.btn); m&&m.classList.add('hidden'); b&&b.classList.remove('open'); }
+function positionAllDD(){ ['material','accessory'].forEach(positionDD); }
+function closeAllDD(){ ['material','accessory'].forEach(closeDD); }
+/* back-compat aliases */
+function toggleCatMenu(){ toggleDD('material'); } function closeCatMenu(){ closeAllDD(); }
+function buildCatMenu(){ buildDomainMenu('material'); } function positionCatMenu(){ positionAllDD(); }
+
 function buildCategoryPages(){
-  const host=$('#categoryPages'); const cats=S.lists.categories||[];
-  host.innerHTML=cats.map(c=>{
-    const id='page-cat-'+slug(c);
-    return `<section class="page" id="${id}" data-cat="${esc(c)}">
+  const host=$('#categoryPages'); let html='';
+  ['material','accessory'].forEach(domain=>{ const d=DD[domain]; const pk=pageKey(domain);
+    html+=catsFor(domain).map(c=>{ const sg=slug(c);
+      return `<section class="page" id="${pageId(domain,c)}" data-domain="${domain}" data-cat="${esc(c)}">
       <div class="backbar">
         <button class="back" data-go="dash">🏠 Dashboard</button>
-        <button class="back catpick">📂 Switch category ▾</button>
+        <button class="back catpick" data-domain="${domain}">${d.icon} Switch ${domain==='accessory'?'accessory':'category'} ▾</button>
       </div>
-      <div class="card" style="margin-bottom:14px;border-left:4px solid var(--org)">
+      <div class="card" style="margin-bottom:14px;border-left:4px solid ${domain==='accessory'?'var(--blue)':'var(--org)'}">
         <div class="card-body" style="display:flex;align-items:center;gap:13px;flex-wrap:wrap">
           <div style="font-size:26px">${catIcon(c)}</div>
           <div style="flex:1;min-width:0"><h2 style="margin:0;font-size:17px;font-weight:800">${esc(c)}</h2>
-          <div style="font-size:12px;color:var(--ink-soft)" id="catsub-${slug(c)}"></div></div>
+          <div style="font-size:12px;color:var(--ink-soft)" id="catsub-${pk}-${sg}"></div></div>
           <div class="toolbar" style="margin:0">
-            ${'' /* buttons injected on render for perms */}
-            <button class="btn solid catAdd" data-cat="${esc(c)}">＋ Add Material</button>
-            <button class="btn catCsv" data-cat="${esc(c)}">⬇️ CSV</button>
+            <button class="btn solid catAdd" data-domain="${domain}" data-cat="${esc(c)}">${d.add}</button>
+            <button class="btn catCsv" data-domain="${domain}" data-cat="${esc(c)}">⬇️ CSV</button>
             <button class="btn catPrint">🖨️ Print</button>
           </div>
         </div>
       </div>
-      <div class="tablewrap"><table id="tbl-${slug(c)}"><thead>
+      <div class="tablewrap"><table id="tbl-${pk}-${sg}"><thead>
         <tr>
-          <th data-sort="name">Material <span class="arw"></span></th>
+          <th data-sort="name">${domain==='accessory'?'Accessory':'Material'} <span class="arw"></span></th>
           <th data-sort="notes">Notes / Specs</th>
           <th data-sort="unit">Unit <span class="arw"></span></th>
           <th data-sort="baseline" class="num">Price Before (USD) <span class="arw"></span></th>
@@ -964,19 +983,17 @@ function buildCategoryPages(){
           <th data-sort="delta" class="num">% <span class="arw"></span></th>
           <th data-sort="supplier">Supplier</th>
           <th style="text-align:right">Actions</th>
-        </tr></thead><tbody id="tbody-${slug(c)}"></tbody></table></div>
-    </section>`;
-  }).join('');
-  // wire per-page buttons
-  host.querySelectorAll('.catAdd').forEach(b=>b.onclick=()=>openMaterial(null,b.dataset.cat));
-  host.querySelectorAll('.catCsv').forEach(b=>b.onclick=()=>exportCategory(b.dataset.cat));
+        </tr></thead><tbody id="tbody-${pk}-${sg}"></tbody></table></div>
+    </section>`; }).join('');
+  });
+  host.innerHTML=html;
+  host.querySelectorAll('.catAdd').forEach(b=>b.onclick=()=>openMaterial(null,b.dataset.cat,b.dataset.domain));
+  host.querySelectorAll('.catCsv').forEach(b=>b.onclick=()=>exportCategory(b.dataset.domain,b.dataset.cat));
   host.querySelectorAll('.catPrint').forEach(b=>b.onclick=()=>window.print());
   host.querySelectorAll('.backbar .back[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
-  host.querySelectorAll('.backbar .catpick').forEach(b=>b.onclick=e=>{ e.stopPropagation(); const menu=$('#catMenu'); if(menu){ $('#tabs').scrollIntoView({block:'nearest'}); toggleCatMenu(); } });
+  host.querySelectorAll('.backbar .catpick').forEach(b=>b.onclick=e=>{ e.stopPropagation(); $('#tabs').scrollIntoView({block:'nearest'}); toggleDD(b.dataset.domain); });
   host.querySelectorAll('th[data-sort]').forEach(th=>th.onclick=()=>{
-    const k=th.dataset.sort; S.sort.dir=(S.sort.key===k)?-S.sort.dir:1; S.sort.key=k;
-    renderCurrentCategory();
-  });
+    const k=th.dataset.sort; S.sort.dir=(S.sort.key===k)?-S.sort.dir:1; S.sort.key=k; renderCurrentCategory(); });
 }
 function sortMats(a){
   const k=S.sort.key,d=S.sort.dir;
@@ -985,14 +1002,16 @@ function sortMats(a){
     if(typeof A==='number'&&typeof B==='number') return (A-B)*d;
     return String(A).localeCompare(String(B),undefined,{numeric:true})*d; });
 }
-function renderCategory(c){
-  const tb=$('#tbody-'+slug(c)); if(!tb) return;
-  const sub=$('#catsub-'+slug(c));
-  let a=sortMats(matsInCat(c));
+function renderCategory(domain,c){
+  const pk=pageKey(domain),sg=slug(c);
+  const tb=$('#tbody-'+pk+'-'+sg); if(!tb) return;
+  const sub=$('#catsub-'+pk+'-'+sg);
+  const noun=domain==='accessory'?'accessories':'materials';
+  let a=sortMats(itemsIn(domain,c));
   if(sub){ const down=a.filter(m=>moveOf(m)==='down').length, up=a.filter(m=>moveOf(m)==='up').length;
-    sub.innerHTML=`${a.length} materials · <span style="color:var(--green)">▼ ${down} reduced</span> · <span style="color:var(--red)">▲ ${up} increased</span>`; }
+    sub.innerHTML=`${a.length} ${noun} · <span style="color:var(--green)">▼ ${down} reduced</span> · <span style="color:var(--red)">▲ ${up} increased</span>`; }
   const canDel=P().del;
-  if(!a.length){ tb.innerHTML=`<tr><td colspan="9"><div class="empty"><span class="ic">${catIcon(c)}</span>No materials in this category.${P().add?`<br><br><button class="btn solid" onclick="openMaterial(null,'${esc(c).replace(/'/g,"\\'")}')">＋ Add material</button>`:''}</div></td></tr>`; return; }
+  if(!a.length){ tb.innerHTML=`<tr><td colspan="9"><div class="empty"><span class="ic">${catIcon(c)}</span>No ${noun} in this category.${P().add?`<br><br><button class="btn solid" onclick="openMaterial(null,'${esc(c).replace(/'/g,"\\'")}','${domain}')">${DD[domain].add}</button>`:''}</div></td></tr>`; return; }
   tb.innerHTML=a.map(m=>{
     const mv=moveOf(m),d=delta(m),un=unread(m);
     return `<tr id="row-${m.id}" data-id="${m.id}" class="${m.flagged?'flagged':''}">
@@ -1012,14 +1031,14 @@ function renderCategory(c){
       </div></td></tr>`;
   }).join('');
 }
-function renderCurrentCategory(){ if(S.curPage.startsWith('cat:')) renderCategory(S.curPage.slice(4)); }
-function renderAllCategories(){ (S.lists.categories||[]).forEach(renderCategory); }
+function renderCurrentCategory(){ const [d,c]=curDomainCat(); if(d) renderCategory(d,c); }
+function renderAllCategories(){ (S.lists.categories||[]).forEach(c=>renderCategory('material',c)); (S.lists.accCategories||[]).forEach(c=>renderCategory('accessory',c)); }
 </script>
 <script>
 /* ============================ RENDER: SHELL ============================ */
 function renderAll(){ buildTabs(); renderDash(); renderAllCategories(); renderActivity(); renderBin(); renderLists(); renderNotifs(); paintUndo(); paintPerms(); }
 function paintPerms(){
-  $('#fabAdd').classList.toggle('hidden',!(P().add && S.curPage.startsWith('cat:')));
+  $('#fabAdd').classList.toggle('hidden',!(P().add && (S.curPage.startsWith('cat:')||S.curPage.startsWith('acc:'))));
   $('#btnSeed').classList.toggle('hidden',!(isAdmin()&&matList().length===0));
   $('#btnViewAs').classList.toggle('hidden',!realAdmin());
   $('#btnClearAct').classList.toggle('hidden',!isAdmin());
@@ -1054,27 +1073,29 @@ function renderWelcome(){
   $('#welcomeTitle').innerHTML=`${greet}, <b>${esc(first)}</b>!`;
   $('#welcomeText').textContent=arr[i];
 }
-function renderCatGrid(){
-  const g=$('#catGrid'); if(!g)return; const cats=S.lists.categories||[];
-  $('#catSelSide')&&($('#catSelSide').textContent=`${cats.length} headers · tap to open`);
-  g.innerHTML=cats.map(c=>{ const items=matsInCat(c); const down=items.filter(m=>moveOf(m)==='down').length, up=items.filter(m=>moveOf(m)==='up').length;
-    return `<button class="cat-tile" data-go="cat:${esc(c)}"><div class="ic">${catIcon(c)}</div>
+function renderCatGrid(domain){
+  domain=domain||'material'; const d=DD[domain]; const gid=domain==='accessory'?'accGrid':'catGrid'; const sid=domain==='accessory'?'accSelSide':'catSelSide';
+  const g=$('#'+gid); if(!g)return; const cats=catsFor(domain); const pk=pageKey(domain); const noun=domain==='accessory'?'accessories':'materials';
+  $('#'+sid)&&($('#'+sid).textContent=`${cats.length} headers · tap to open`);
+  g.innerHTML=cats.map(c=>{ const items=itemsIn(domain,c); const down=items.filter(m=>moveOf(m)==='down').length, up=items.filter(m=>moveOf(m)==='up').length;
+    return `<button class="cat-tile" data-go="${pk}:${esc(c)}"><div class="ic">${catIcon(c)}</div>
       <div style="flex:1;min-width:0"><div class="nm">${esc(shortCat(c))}</div>
-      <div class="mt">${items.length} materials${down?` · ▼${down}`:''}${up?` · ▲${up}`:''}</div></div><div class="go">›</div></button>`; }).join('');
+      <div class="mt">${items.length} ${noun}${down?` · ▼${down}`:''}${up?` · ▲${up}`:''}</div></div><div class="go">›</div></button>`; }).join('');
   g.querySelectorAll('.cat-tile').forEach(el=>el.onclick=()=>go(el.dataset.go));
 }
 function renderDash(){
   renderWelcome();
-  renderCatGrid();
-  const a=matList();
+  renderCatGrid('material'); renderCatGrid('accessory');
+  const a=matList().filter(m=>domainOf(m)==='material');
+  const acc=matList().filter(m=>domainOf(m)==='accessory');
   const down=a.filter(m=>moveOf(m)==='down').length, up=a.filter(m=>moveOf(m)==='up').length;
-  const flagged=a.filter(m=>m.flagged).length;
+  const flagged=matList().filter(m=>m.flagged).length;
   $('#kpiTiles').innerHTML=[
-    ['Total Materials',fmt0(a.length),`${S.lists.categories.length} categories`,'','📦'],
-    ['Reduced Prices',fmt0(down),'▼ since baseline','green','📉'],
-    ['Increased Prices',fmt0(up),'▲ since baseline',up?'red':'','📈'],
+    ['Materials',fmt0(a.length),`${S.lists.categories.length} categories`,'','📦'],
+    ['Accessories',fmt0(acc.length),`${(S.lists.accCategories||[]).length} categories`,'blue','🧰'],
+    ['Reduced Prices',fmt0(down),'▼ materials','green','📉'],
+    ['Increased Prices',fmt0(up),'▲ materials',up?'red':'','📈'],
     ['FX Rate',fmt0(S.fx),'EGP / USD','amber','🌐'],
-    ['Suppliers',fmt0(new Set(a.map(m=>m.supplier).filter(s=>s&&s!=='—')).size),'distinct','blue','🚚'],
     ['Flagged / Review',fmt0(flagged),'need attention','purple','⚠️']
   ].map(([l,v,s,c,ic])=>`<div class="tile ${c}"><span class="ic">${ic}</span><div class="lbl">${l}</div><div class="val">${v}</div><div class="sub">${s}</div></div>`).join('');
   drawCatCount('cvCatCount'); drawSplit('cvSplit');
@@ -1115,10 +1136,9 @@ function renderLists(){
   Object.entries(map).forEach(([k,id])=>{ const arr=S.lists[k]||[]; $('#'+pills[k]).textContent=arr.length;
     $('#'+id).innerHTML=arr.map((v,i)=>`<span class="mchip">${esc(shortCat(v))}<button onclick="delListItem('${k}',${i})">✕</button></span>`).join('')||'<span style="color:var(--ink-soft);font-size:12px">Empty</span>'; });
   $('#fxShow').textContent=S.fx; $('#fxInput').value=S.fx;
-  renderUsers();
 }
 function renderUsers(){
-  if(!isAdmin())return; $('#pillUsers').textContent=S.users.length;
+  if(!isAdmin()||!$('#listUsers'))return; $('#pillUsers')&&($('#pillUsers').textContent=S.users.length);
   $('#listUsers').innerHTML=S.users.map((u,i)=>`<tr><td class="mname">${roleIcon(u.role)} ${esc(u.name)}${u.title?` <span style="font-size:10px;color:var(--ink-soft)">· ${esc(u.title)}</span>`:''}</td>
     <td><span class="role-badge ${u.role}">${esc(u.role)}</span></td><td style="font-family:monospace">${esc(u.pass)}</td>
     <td><div class="rowbtns"><button class="rowbtn" onclick="delUser(${i})" title="Remove">✕</button></div></td></tr>`).join('');
@@ -1147,20 +1167,23 @@ function closeModal(){ $('#modalHost').innerHTML=''; }
 
 /* ============================ MATERIAL EDITOR ============================ */
 let AC={items:[],idx:-1};
-function openMaterial(id,presetCat){
+function openMaterial(id,presetCat,presetDomain){
   const isNew=!id;
-  if(isNew && !P().add){ toast('Your role cannot add materials','warn'); return; }
-  const m=isNew ? {id:uid(),name:'',category:presetCat||S.lists.categories[0]||'',notes:'',unit:'',currency:'USD',
+  if(isNew && !P().add){ toast('Your role cannot add items','warn'); return; }
+  const domain = isNew ? (presetDomain||'material') : domainOf(S.materials[id]||{});
+  const cats = catsFor(domain);
+  const noun = domain==='accessory'?'Accessory':'Material';
+  const m=isNew ? {id:uid(),name:'',domain,category:presetCat||cats[0]||'',notes:'',unit:'',currency:'USD',
                    baseline:'',price:'',supplier:'—',flagged:false,addedBy:S.user.name,addedAt:nowISO()}
                 : Object.assign({},S.materials[id]);
   const ro=f=>(isNew?!P().add:!canEdit(f))?'disabled':'';
   const hint=f=>(!isNew&&!canEdit(f))?`<div class="lockhint">🔒 locked for ${effRole()}</div>`:'';
   const opts=(arr,v)=>arr.map(x=>`<option ${x===v?'selected':''}>${esc(x)}</option>`).join('');
-  modal(`<div class="modal-head"><span>${isNew?'➕':'✏️'}</span><h3>${isNew?'Add Material':esc(m.name)}</h3><button class="x" onclick="closeModal()">✕</button></div>
+  modal(`<div class="modal-head"><span>${isNew?'➕':'✏️'}</span><h3>${isNew?'Add '+noun:esc(m.name)}</h3><button class="x" onclick="closeModal()">✕</button></div>
    <div class="modal-body">
-     <div class="field ac-wrap"><label>Material name *</label><input id="fmName" value="${esc(m.name)}" ${isNew?'':ro('name')} autocomplete="off" placeholder="type to search library…">${hint('name')}<div id="acList" class="ac-list hidden"></div></div>
+     <div class="field ac-wrap"><label>${noun} name *</label><input id="fmName" value="${esc(m.name)}" ${isNew?'':ro('name')} autocomplete="off" placeholder="type to search library…">${hint('name')}<div id="acList" class="ac-list hidden"></div></div>
      <div class="grid2">
-       <div class="field"><label>Category (page)</label><select id="fmCat" ${isNew?'':(canEdit('category')?'':'disabled')}>${opts(S.lists.categories,m.category)}</select>${hint('category')}</div>
+       <div class="field"><label>Category (page)</label><select id="fmCat" ${isNew?'':(canEdit('category')?'':'disabled')}>${opts(cats,m.category)}</select>${hint('category')}</div>
        <div class="field"><label>Measure unit</label><select id="fmUnit" ${isNew?'':ro('unit')}><option value=""></option>${opts(S.lists.units,m.unit)}</select>${hint('unit')}</div>
        <div class="field"><label>Price Before (USD)</label><input id="fmBase" type="number" step="0.01" value="${m.baseline}" ${isNew?'':(canEdit('baseline')?'':'disabled')}>${hint('baseline')}</div>
        <div class="field"><label>Price Now (USD) *</label><input id="fmPrice" type="number" step="0.01" value="${m.price}" ${isNew?'':ro('price')}>${hint('price')}</div>
@@ -1177,14 +1200,17 @@ function openMaterial(id,presetCat){
      ${(canAny()||isNew)?`<button class="btn solid" id="fmSave">💾 Save</button>`:''}</div>`);
   const upd=()=>{ const p=num($('#fmPrice').value); $('#fmEgp').value=p?fmt0(p*num(S.fx)):''; };
   $('#fmPrice')&&$('#fmPrice').addEventListener('input',upd);
-  if(isNew||canEdit('name')) wireAutocomplete();
-  const sv=$('#fmSave'); if(sv) sv.onclick=()=>saveMaterial(m,isNew);
+  if(isNew||canEdit('name')) wireAutocomplete(domain);
+  const sv=$('#fmSave'); if(sv) sv.onclick=()=>saveMaterial(m,isNew,domain);
 }
-function wireAutocomplete(){
-  const inp=$('#fmName'),box=$('#acList');
-  const lib=(window.SEED_DATA||[]).map(x=>({name:x[1],category:x[0],unit:x[2],notes:x[3],price:x[4],supplier:x[6]}))
-    .concat(matList().map(m=>({name:m.name,category:catOf(m),unit:m.unit,notes:m.notes,price:num(m.price),supplier:m.supplier})));
+function wireAutocomplete(domain){
+  domain=domain||'material';
+  const seed=domain==='accessory'?(window.ACC_SEED_DATA||[]):(window.SEED_DATA||[]);
+  const cats=catsFor(domain);
+  const lib=seed.map(x=>({name:x[1],category:x[0],unit:x[2],notes:x[3],price:x[4],supplier:x[6]}))
+    .concat(matList().filter(m=>domainOf(m)===domain).map(m=>({name:m.name,category:catOf(m),unit:m.unit,notes:m.notes,price:num(m.price),supplier:m.supplier})));
   const seen=new Set(); const uniq=lib.filter(x=>{ const k=x.name.toLowerCase(); if(seen.has(k))return false; seen.add(k); return true; });
+  const inp=$('#fmName'),box=$('#acList');
   const render=q=>{ if(!q||q.length<2){ box.classList.add('hidden'); return; }
     const hits=uniq.filter(x=>x.name.toLowerCase().includes(q.toLowerCase())).slice(0,40);
     if(!hits.length){ box.classList.add('hidden'); return; }
@@ -1195,7 +1221,7 @@ function wireAutocomplete(){
     box.innerHTML=html; box.classList.remove('hidden'); AC.idx=-1;
     box.querySelectorAll('.ac-item').forEach(el=>el.onclick=()=>pick(AC.items[+el.dataset.i])); };
   const pick=h=>{ $('#fmName').value=h.name;
-    if(!$('#fmCat').disabled && h.category && S.lists.categories.includes(h.category)) $('#fmCat').value=h.category;
+    if(!$('#fmCat').disabled && h.category && cats.includes(h.category)) $('#fmCat').value=h.category;
     if(!$('#fmUnit').disabled && h.unit) $('#fmUnit').value=h.unit;
     if(!$('#fmNotes').disabled && h.notes && !$('#fmNotes').value) $('#fmNotes').value=h.notes;
     if(!$('#fmSup').disabled && h.supplier && S.lists.suppliers.includes(h.supplier)) $('#fmSup').value=h.supplier;
@@ -1210,12 +1236,14 @@ function wireAutocomplete(){
     its.forEach(x=>x.classList.remove('sel')); its[AC.idx].classList.add('sel'); its[AC.idx].scrollIntoView({block:'nearest'}); });
   document.addEventListener('mousedown',e=>{ if(box&&!box.contains(e.target)&&e.target!==inp) box.classList.add('hidden') });
 }
-function saveMaterial(m,isNew){
+function saveMaterial(m,isNew,domain){
+  domain=domain||domainOf(m);
   const g=(id,fb)=>{ const el=$(id); return (!el||el.disabled)?fb:el.value; };
   const prev=isNew?null:Object.assign({},S.materials[m.id]);
-  const name=g('#fmName',m.name).trim(); if(!name){ toast('Material name is required','err'); return; }
+  const noun=domain==='accessory'?'Accessory':'Material';
+  const name=g('#fmName',m.name).trim(); if(!name){ toast(noun+' name is required','err'); return; }
   const price=num(g('#fmPrice',m.price));
-  const o={ id:m.id, name, category:g('#fmCat',m.category), notes:g('#fmNotes',m.notes),
+  const o={ id:m.id, name, domain, category:g('#fmCat',m.category), notes:g('#fmNotes',m.notes),
     unit:g('#fmUnit',m.unit), currency:'USD', supplier:g('#fmSup',m.supplier),
     baseline:num(g('#fmBase',m.baseline))||(isNew?price:num(prev.baseline)), price,
     flagged: $('#fmFlag')?$('#fmFlag').checked:!!m.flagged,
@@ -1300,17 +1328,24 @@ function sendChat(){ const t=$('#chatText').value.trim(); if(!t||!CHAT_ID)return
   logAct('chat',`Message on <b>${esc(m.name||CHAT_ID)}</b>: ${esc(t.slice(0,80))}`,{materialId:CHAT_ID});
   notifyAll(`💬 ${m.name||'Material'}`,`${S.user.name}: ${t.slice(0,110)}`,{materialId:CHAT_ID,chat:true}); }
 
-/* universal search */
+/* universal search — matches name, unit, specs/notes, category, supplier; shows name · unit · specs/note */
 function runSearch(q){ const box=$('#searchResults'); q=(q||'').trim().toLowerCase();
   if(q.length<2){ box.classList.add('hidden'); box.innerHTML=''; return; }
   const hit=s=>String(s||'').toLowerCase().includes(q); const groups=[];
-  const mats=matList().filter(m=>hit(m.name)||hit(m.notes)||hit(catOf(m))||hit(m.supplier)||hit(m.unit)).slice(0,25);
-  if(mats.length) groups.push(['📦 Materials',mats.map(m=>({t:m.name,s:`${shortCat(catOf(m))} · ${m.unit||''}`,g:fmt(m.price)+' USD',act:()=>gotoMaterial(m.id)}))]);
-  const cats=(S.lists.categories||[]).filter(c=>hit(c)).slice(0,10);
-  if(cats.length) groups.push(['🏷️ Categories',cats.map(c=>({t:shortCat(c),s:matsInCat(c).length+' materials',g:'',act:()=>go('cat:'+c)}))]);
+  const sub=m=>[shortCat(catOf(m)), (m.unit||''), (m.notes||'')].filter(Boolean).join(' · ');
+  const mkRow=m=>({t:m.name,s:sub(m),g:fmt(m.price)+' USD',act:()=>gotoMaterial(m.id)});
+  const match=m=>hit(m.name)||hit(m.notes)||hit(catOf(m))||hit(m.supplier)||hit(m.unit);
+  const mats=matList().filter(m=>domainOf(m)==='material'&&match(m)).slice(0,20);
+  if(mats.length) groups.push(['📦 Materials',mats.map(mkRow)]);
+  const accs=matList().filter(m=>domainOf(m)==='accessory'&&match(m)).slice(0,20);
+  if(accs.length) groups.push(['🧰 Accessories',accs.map(mkRow)]);
+  const mc=(S.lists.categories||[]).filter(c=>hit(c)).slice(0,8);
+  if(mc.length) groups.push(['🏷️ Material Categories',mc.map(c=>({t:shortCat(c),s:matsInCat(c).length+' materials',g:'',act:()=>go('cat:'+c)}))]);
+  const ac=(S.lists.accCategories||[]).filter(c=>hit(c)).slice(0,8);
+  if(ac.length) groups.push(['🧩 Accessory Categories',ac.map(c=>({t:shortCat(c),s:accsInCat(c).length+' accessories',g:'',act:()=>go('acc:'+c)}))]);
   const sups=(S.lists.suppliers||[]).filter(hit).slice(0,8);
-  if(sups.length) groups.push(['🚚 Suppliers',sups.map(c=>({t:c,s:matList().filter(m=>m.supplier===c).length+' materials',g:'',act:()=>{ $('#globalSearch').value=c; }}))]);
-  const chats=[]; Object.entries(S.chats||{}).forEach(([mid,th])=>Object.values(th).forEach(x=>{ if(hit(x.text)&&chats.length<12)chats.push({t:(S.materials[mid]?.name||'Material'),s:`${x.by}: ${x.text.slice(0,70)}`,g:'💬',act:()=>openChat(mid)}); }));
+  if(sups.length) groups.push(['🚚 Suppliers',sups.map(c=>({t:c,s:matList().filter(m=>m.supplier===c).length+' items',g:'',act:()=>{ $('#globalSearch').value=c; }}))]);
+  const chats=[]; Object.entries(S.chats||{}).forEach(([mid,th])=>Object.values(th).forEach(x=>{ if(hit(x.text)&&chats.length<12)chats.push({t:(S.materials[mid]?.name||'Item'),s:`${x.by}: ${x.text.slice(0,70)}`,g:'💬',act:()=>openChat(mid)}); }));
   if(chats.length) groups.push(['💬 Chat',chats]);
   const acts=Object.values(S.activity||{}).filter(x=>hit(x.text.replace(/<[^>]+>/g,''))||hit(x.user)).sort((a,b)=>b.at.localeCompare(a.at)).slice(0,12);
   if(acts.length) groups.push(['🕘 Activity',acts.map(x=>({t:x.text.replace(/<[^>]+>/g,'').slice(0,72),s:`${x.user} · ${ago(x.at)}`,g:'',act:()=>go('activity')}))]);
@@ -1321,17 +1356,17 @@ function runSearch(q){ const box=$('#searchResults'); q=(q||'').trim().toLowerCa
   box.innerHTML=html; box.classList.remove('hidden');
   box.querySelectorAll('.sr-item').forEach(el=>el.onclick=()=>{ box.classList.add('hidden'); window.__SR[+el.dataset.i].act(); }); }
 function hl(t,q){ const s=esc(String(t||'')); const i=s.toLowerCase().indexOf(q); if(i<0)return s; return s.slice(0,i)+'<mark class="jump">'+s.slice(i,i+q.length)+'</mark>'+s.slice(i+q.length); }
-function gotoMaterial(id){ const m=S.materials[id]; if(!m)return; go('cat:'+catOf(m));
+function gotoMaterial(id){ const m=S.materials[id]; if(!m)return; const dom=domainOf(m); go((dom==='accessory'?'acc:':'cat:')+catOf(m));
   setTimeout(()=>{ const r=$('#row-'+id); if(!r)return; try{ r.scrollIntoView&&r.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){} r.classList.remove('flash'); void r.offsetWidth; r.classList.add('flash'); },120); }
 
 /* export */
 function csv(rows,name){ const b=rows.map(r=>r.map(c=>{ const s=String(c??''); return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s; }).join(',')).join('\r\n');
   const blob=new Blob(['\ufeff'+b],{type:'text/csv;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
   a.download=`${name}_${new Date().toISOString().slice(0,10)}.csv`; a.click(); URL.revokeObjectURL(a.href); toast('CSV exported','ok'); }
-function rowsFor(a){ const r=[['Category','Material','Notes','Unit','Price Before USD','Price Now USD','Price EGP','Delta %','Supplier','Modified By','Modified At']];
-  a.forEach(m=>r.push([catOf(m),m.name,m.notes,m.unit,num(m.baseline),num(m.price),Math.round(priceEGP(m)),delta(m).toFixed(2),m.supplier,m.modifiedBy||'',m.modifiedAt||''])); return r; }
-function exportAll(){ csv(rowsFor(matList()),'MobiMate_All_Materials'); }
-function exportCategory(c){ csv(rowsFor(matsInCat(c)),'MobiMate_'+slug(c)); }
+function rowsFor(a){ const r=[['Type','Category','Name','Notes/Specs','Unit','Price Before USD','Price Now USD','Price EGP','Delta %','Supplier','Modified By','Modified At']];
+  a.forEach(m=>r.push([domainOf(m),catOf(m),m.name,m.notes,m.unit,num(m.baseline),num(m.price),Math.round(priceEGP(m)),delta(m).toFixed(2),m.supplier,m.modifiedBy||'',m.modifiedAt||''])); return r; }
+function exportAll(){ csv(rowsFor(matList()),'MobiMate_All_Items'); }
+function exportCategory(domain,c){ if(typeof c==='undefined'){ c=domain; domain='material'; } csv(rowsFor(itemsIn(domain,c)),'MobiMate_'+slug(c)); }
 function exportActivity(){ const r=[['When','User','Role','Type','Detail']]; Object.values(S.activity||{}).sort((a,b)=>b.at.localeCompare(a.at)).forEach(x=>r.push([x.at,x.user,x.role,x.type,x.text.replace(/<[^>]+>/g,'')])); csv(r,'MobiMate_Activity'); }
 function backupJSON(){ const data={version:APP_VERSION,at:nowISO(),materials:S.materials,deleted:S.deleted,lists:S.lists,fx:S.fx,activity:S.activity,chats:S.chats,users:S.users};
   const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`MobiMate_Backup_${new Date().toISOString().slice(0,10)}.json`; a.click(); toast('Backup downloaded','ok'); }
@@ -1357,13 +1392,15 @@ function delUser(i){ if(!P().lists)return; const u=S.users[i]; if(u.name==='Nour
   if(!confirm(`Remove ${u.name}?`))return; S.users.splice(i,1); saveUsers(); renderUsers(); logAct('list',`Removed user <b>${esc(u.name)}</b>`); notifyAdmin('User removed',`${u.name}`); pushUndo('Remove user '+u.name,()=>{ S.users.splice(i,0,u); saveUsers(); renderUsers(); }); }
 
 /* seed */
-function seedPriceList(){ if(!P().seed)return; if(!confirm(`Load ${SEED_DATA.length} materials from the Mobica price list?`))return;
-  const t=nowISO(),batch={}; SEED_DATA.forEach(([cat,name,unit,notes,usd,egp,supplier,usdBefore])=>{ const id=uid();
-    batch[id]={id,name,category:cat,notes:notes||'',unit:unit||'',currency:'USD',supplier:supplier||'—',
+function seedRows(seed,domain,t){ const batch={}; (seed||[]).forEach(([cat,name,unit,notes,usd,egp,supplier,usdBefore])=>{ const id=uid();
+    batch[id]={id,name,domain,category:cat,notes:notes||'',unit:unit||'',currency:'USD',supplier:supplier||'—',
       baseline:num(usdBefore||usd),price:num(usd),flagged:false,addedBy:S.user.name,addedAt:t,modifiedBy:S.user.name,modifiedAt:t,
-      history:[{at:t,by:S.user.name,role:S.role,from:null,to:num(usd)}]}; });
-  DB.set('materials',batch); logAct('create',`Loaded <b>${SEED_DATA.length}</b> materials from Mobica price list`);
-  notifyAdmin('Price list loaded',`${SEED_DATA.length} materials imported`); pushUndo('Load price list',()=>DB.set('materials',{})); toast('Loaded '+SEED_DATA.length+' materials','ok'); }
+      history:[{at:t,by:S.user.name,role:S.role,from:null,to:num(usd)}]}; }); return batch; }
+function seedPriceList(){ if(!P().seed)return; const total=(SEED_DATA||[]).length+(window.ACC_SEED_DATA||[]).length;
+  if(!confirm(`Load ${total} items (materials + accessories) from the Mobica price lists?`))return;
+  const t=nowISO(); const batch=Object.assign({}, seedRows(SEED_DATA,'material',t), seedRows(window.ACC_SEED_DATA,'accessory',t));
+  DB.set('materials',batch); logAct('create',`Loaded <b>${total}</b> items from Mobica price lists`);
+  notifyAdmin('Price lists loaded',`${total} items imported`); pushUndo('Load price lists',()=>DB.set('materials',{})); toast('Loaded '+total+' items','ok'); }
 </script>
 <script>
 /* ============================ CHARTS ============================ */
@@ -1389,20 +1426,20 @@ function drawSplit(id){ const c=ctxOf(id); if(!c)return; const {x,w,h}=c; const 
   label(x,tot,cx,cy-6,'center',17,'#1e2a3a',true); label(x,'materials',cx,cy+11,'center',9.5);
   $('#splitLegend').innerHTML=rows.map(r=>`<span><i style="background:${r[2]}"></i>${r[0]} ${r[1]}</span>`).join(''); }
 function renderCharts(){ drawCatCount('cvCatCount'); drawSplit('cvSplit'); }
-let rzT; window.addEventListener('resize',()=>{ clearTimeout(rzT); rzT=setTimeout(()=>{ renderCharts(); positionCatMenu&&positionCatMenu(); },180); });
-window.addEventListener('scroll',()=>{ if($('#catMenu')&&!$('#catMenu').classList.contains('hidden')) positionCatMenu(); },true);
+let rzT; window.addEventListener('resize',()=>{ clearTimeout(rzT); rzT=setTimeout(()=>{ renderCharts(); positionAllDD(); },180); });
+window.addEventListener('scroll',()=>{ positionAllDD(); },true);
 
 /* ============================ NAV ============================ */
 function go(page){
   S.curPage=page;
-  $$('.tab').forEach(t=>t.classList.toggle('active',t.dataset.page===page));
   $$('.page').forEach(p=>p.classList.remove('active'));
   if(page==='dash'){ $('#page-dash').classList.add('active'); setTimeout(renderCharts,60); }
   else if(page==='activity'){ $('#page-activity').classList.add('active'); renderActivity(); }
   else if(page==='bin'){ $('#page-bin').classList.add('active'); renderBin(); }
   else if(page==='lists'){ $('#page-lists').classList.add('active'); renderLists(); }
-  else if(page.startsWith('cat:')){ const c=page.slice(4); const el=$('#page-cat-'+slug(c)); if(el){ el.classList.add('active'); renderCategory(c); } }
-  paintPerms(); window.scrollTo({top:0,behavior:'smooth'});
+  else if(page.startsWith('cat:')){ const c=page.slice(4); const el=$('#'+pageId('material',c)); if(el){ el.classList.add('active'); renderCategory('material',c); } }
+  else if(page.startsWith('acc:')){ const c=page.slice(4); const el=$('#'+pageId('accessory',c)); if(el){ el.classList.add('active'); renderCategory('accessory',c); } }
+  buildTabs(); paintPerms(); window.scrollTo({top:0,behavior:'smooth'});
 }
 function setViewAs(r){ S.viewAs=(r===S.role||!r)?null:r;
   $('#viewAsBar').classList.toggle('hidden',!S.viewAs); if(S.viewAs)$('#viewAsRole').textContent=S.viewAs;
@@ -1430,7 +1467,7 @@ function enablePush(){ if(!('Notification' in window)){ toast('Notifications not
 function wire(){
   document.addEventListener('click',e=>{ const hh=e.target.closest('[data-collapse]'); if(!hh)return; hh.classList.toggle('collapsed'); const b=hh.nextElementSibling; if(b&&b.classList.contains('card-body'))b.classList.toggle('collapsed'); });
   $('#btnRefresh').onclick=()=>{ renderAll(); toast('Refreshed','ok'); };
-  $('#fabAdd').onclick=()=>{ if(S.curPage.startsWith('cat:'))openMaterial(null,S.curPage.slice(4)); else openMaterial(); };
+  $('#fabAdd').onclick=()=>{ const [d,c]=curDomainCat(); if(d)openMaterial(null,c,d); else openMaterial(); };
   $('#btnExportAll').onclick=exportAll; $('#btnPrintAll').onclick=()=>window.print(); $('#btnExportAct').onclick=exportActivity;
   $('#btnSeed').onclick=seedPriceList;
   $('#btnUndo').onclick=doUndo; $('#btnViewAs').onclick=openViewAs; $('#exitViewAs').onclick=()=>setViewAs(null);
@@ -1442,7 +1479,7 @@ function wire(){
   $('#btnClearAct').onclick=()=>{ if(!isAdmin())return; if(!confirm('Clear the whole activity log?'))return; const prev=S.activity; DB.set('activity',{}); pushUndo('Clear activity log',()=>DB.set('activity',prev)); toast('Log cleared','warn'); };
   $$('[data-addlist]').forEach(b=>b.onclick=()=>addListItem(b.dataset.addlist));
   ['newCategory','newUnit','newCurrency','newSupplier'].forEach(id=>{ const kind={newCategory:'categories',newUnit:'units',newCurrency:'currencies',newSupplier:'suppliers'}[id]; $('#'+id).addEventListener('keydown',e=>{ if(e.key==='Enter')addListItem(kind); }); });
-  $('#btnSetFx').onclick=setFx; $('#btnAddUser').onclick=addUser;
+  $('#btnSetFx').onclick=setFx; if($('#btnAddUser'))$('#btnAddUser').onclick=addUser;
   $('#btnCheckUpdate').onclick=()=>{ navigator.serviceWorker?.getRegistration().then(r=>{ r&&r.update(); toast('Checked for updates','ok'); }); };
   $('#btnClearCache').onclick=clearCacheReload; $('#btnBackup').onclick=backupJSON; $('#btnRestoreBk').onclick=()=>$('#restoreFile').click();
   $('#restoreFile').onchange=e=>{ if(e.target.files[0])restoreJSON(e.target.files[0]); }; $('#btnEnablePush').onclick=enablePush;
@@ -1450,7 +1487,7 @@ function wire(){
   $('#globalSearch').addEventListener('keydown',e=>{ if(e.key==='Escape'){ e.target.value=''; runSearch(''); } });
   $('#clearSearch').onclick=()=>{ $('#globalSearch').value=''; runSearch(''); };
   document.addEventListener('mousedown',e=>{ if(!e.target.closest('.searchbox')) $('#searchResults').classList.add('hidden'); });
-  document.addEventListener('mousedown',e=>{ if(!e.target.closest('.cat-dd')&&!e.target.closest('.catpick')) closeCatMenu(); });
+  document.addEventListener('mousedown',e=>{ if(!e.target.closest('.cat-dd')&&!e.target.closest('.catpick')) closeAllDD(); });
   document.addEventListener('keydown',e=>{ if((e.ctrlKey||e.metaKey)&&e.key==='k'){ e.preventDefault(); $('#globalSearch').focus(); }
     if((e.ctrlKey||e.metaKey)&&e.key==='z'&&realAdmin()&&!/input|textarea/i.test(e.target.tagName)){ e.preventDefault(); doUndo(); }
     if(e.key==='Escape'){ closeModal(); $('#notifPanel').classList.remove('open'); } });
@@ -1472,14 +1509,15 @@ function collapseAllCards(){ $$('.card-head[data-collapse]').forEach(h=>{ h.clas
 /* first-run: auto-load the embedded Mobica price list so data shows without a manual step */
 function autoSeed(){
   if(Object.keys(S.materials||{}).length) return;
-  if(localStorage.getItem('MOBIMATE_SEEDED')==='1') return;
-  const t=nowISO(),batch={};
-  (window.SEED_DATA||[]).forEach(([cat,name,unit,notes,usd,egp,supplier,usdBefore])=>{ const id=uid();
-    batch[id]={id,name,category:cat,notes:notes||'',unit:unit||'',currency:'USD',supplier:supplier||'—',
+  if(localStorage.getItem('MOBIMATE_SEEDED')==='2') return;
+  const t=nowISO();
+  const mk=(seed,domain)=>{ const b={}; (seed||[]).forEach(([cat,name,unit,notes,usd,egp,supplier,usdBefore])=>{ const id=uid();
+    b[id]={id,name,domain,category:cat,notes:notes||'',unit:unit||'',currency:'USD',supplier:supplier||'—',
       baseline:num(usdBefore||usd),price:num(usd),flagged:false,addedBy:S.user.name,addedAt:t,modifiedBy:S.user.name,modifiedAt:t,
-      history:[{at:t,by:S.user.name,role:S.role,from:null,to:num(usd)}]}; });
+      history:[{at:t,by:S.user.name,role:S.role,from:null,to:num(usd)}]}; }); return b; };
+  const batch=Object.assign({}, mk(window.SEED_DATA,'material'), mk(window.ACC_SEED_DATA,'accessory'));
   if(Object.keys(batch).length){ S.materials=batch; DB.set('materials',batch);
-    localStorage.setItem('MOBIMATE_SEEDED','1'); logAct('create',`Auto-loaded ${Object.keys(batch).length} materials from Mobica price list`); }
+    localStorage.setItem('MOBIMATE_SEEDED','2'); logAct('create',`Auto-loaded ${Object.keys(batch).length} items (materials + accessories)`); }
 }
 document.addEventListener('DOMContentLoaded',()=>{ initBackend(); initSW(); initLogin(); });
 </script>
