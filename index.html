@@ -314,6 +314,7 @@ input:disabled,select:disabled,textarea:disabled{background:#f5f7fa;color:var(--
 .chart-grid.four .chart-card canvas{height:172px}
 .chart-grid.four .legend{font-size:9.5px;gap:8px}
 .cat-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat-cards.stacked{grid-template-columns:1fr}
 @media (max-width:1150px){ .chart-grid.four{grid-template-columns:1fr 1fr} }
 .cat-cards .cat-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
 .chart-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 17px;border:1px solid var(--line)}
@@ -598,8 +599,8 @@ window.ACC_CATEGORIES=["Hardware – Runners, Drawers & Sliding", "Hardware – 
    MobiMate — Mobica Material Price List
    MT-Track architecture: single-file PWA + Firebase RTDB + SW cache ver
    ===================================================================== */
-const APP_VERSION = 'v1.12';
-const CACHE_NAME  = 'mobimate-v2026.07.27-12';
+const APP_VERSION = 'v1.13';
+const CACHE_NAME  = 'mobimate-v2026.07.27-13';
 
 const FIREBASE_CONFIG = {
   apiKey: "PASTE_API_KEY",
@@ -1552,7 +1553,7 @@ function enablePush(){ if(!('Notification' in window)){ toast('Notifications not
 
 /* ============================ WIRING ============================ */
 function wire(){
-  document.addEventListener('click',e=>{ const hh=e.target.closest('[data-collapse]'); if(!hh)return; hh.classList.toggle('collapsed'); const b=hh.nextElementSibling; if(b&&b.classList.contains('card-body'))b.classList.toggle('collapsed'); });
+  document.addEventListener('click',e=>{ const hh=e.target.closest('[data-collapse]'); if(!hh)return; hh.classList.toggle('collapsed'); const b=hh.nextElementSibling; if(b&&b.classList.contains('card-body'))b.classList.toggle('collapsed'); syncCatCards(); });
   $('#btnRefresh').onclick=()=>{ renderAll(); toast('Refreshed','ok'); };
   $('#fabAdd').onclick=()=>{ const [d,c]=curDomainCat(); if(d)openMaterial(null,c,d); else openMaterial(); };
   $('#btnExportAll').onclick=exportAll; $('#btnPrintAll').onclick=()=>window.print(); $('#btnExportAct').onclick=exportActivity;
@@ -1594,7 +1595,11 @@ function startApp(){
     logAct('login',`Signed in as <b>${esc(S.role)}</b>`); go('dash'); },420);
 }
 /* all collapsible cards start closed; user opens/closes each */
-function collapseAllCards(){ $$('.card-head[data-collapse]').forEach(h=>{ h.classList.add('collapsed'); const b=h.nextElementSibling; if(b&&b.classList.contains('card-body'))b.classList.add('collapsed'); }); }
+function collapseAllCards(){ $$('.card-head[data-collapse]').forEach(h=>{ h.classList.add('collapsed'); const b=h.nextElementSibling; if(b&&b.classList.contains('card-body'))b.classList.add('collapsed'); }); syncCatCards(); }
+/* when either category card is open, stack them full-width (no empty gap); side-by-side only when both closed */
+function syncCatCards(){ const wrap=$('.cat-cards'); if(!wrap)return;
+  const anyOpen=[...wrap.querySelectorAll('.card-body')].some(b=>!b.classList.contains('collapsed'));
+  wrap.classList.toggle('stacked',anyOpen); }
 /* first-run: auto-load the embedded Mobica price list so data shows without a manual step */
 function loadAccessories(){ if(!isAdmin()){ toast('Admin only','warn'); return; }
   const have=matList().filter(m=>domainOf(m)==='accessory').length;
