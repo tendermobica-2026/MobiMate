@@ -307,6 +307,15 @@ input:disabled,select:disabled,textarea:disabled{background:#f5f7fa;color:var(--
 
 /* charts */
 .chart-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.chart-grid.four{grid-template-columns:repeat(4,1fr);gap:12px}
+.chart-grid.four .chart-card{padding:12px 13px}
+.chart-grid.four .chart-card h4{font-size:12px}
+.chart-grid.four .chart-card .cs{font-size:9.5px;margin-bottom:8px}
+.chart-grid.four .chart-card canvas{height:172px}
+.chart-grid.four .legend{font-size:9.5px;gap:8px}
+.cat-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:1150px){ .chart-grid.four{grid-template-columns:1fr 1fr} }
+.cat-cards .cat-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
 .chart-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 17px;border:1px solid var(--line)}
 .chart-card h4{margin:0 0 3px;font-size:13.5px;color:var(--ink);font-weight:800}
 .chart-card .cs{font-size:11px;color:var(--ink-soft);margin-bottom:12px}
@@ -368,7 +377,8 @@ input:disabled,select:disabled,textarea:disabled{background:#f5f7fa;color:var(--
   .tiles{grid-template-columns:1fr 1fr;gap:10px}
   .tile{padding:13px 14px} .tile .val{font-size:25px}
   .searchrow{gap:8px} .searchbox{min-width:100%;order:-1}
-  .chart-grid{grid-template-columns:1fr}
+  .chart-grid,.chart-grid.four{grid-template-columns:1fr}
+  .cat-cards{grid-template-columns:1fr}
   .modal-card{max-height:94vh}
   .cat-menu{width:min(92vw,340px)}
 }
@@ -467,13 +477,15 @@ input:disabled,select:disabled,textarea:disabled{background:#f5f7fa;color:var(--
         <div class="txt"><h2 id="welcomeTitle">Welcome</h2><p id="welcomeText"></p></div>
         <button class="x" id="welcomeClose">✕</button>
       </div>
-      <div class="card">
-        <div class="card-head" data-collapse><span class="ic">📂</span><h3>Material Categories</h3><span class="side" id="catSelSide"></span><span class="chev">▼</span></div>
-        <div class="card-body"><div class="cat-grid" id="catGrid"></div></div>
-      </div>
-      <div class="card">
-        <div class="card-head" data-collapse><span class="ic">🧰</span><h3>Accessories Categories</h3><span class="side" id="accSelSide"></span><span class="chev">▼</span></div>
-        <div class="card-body"><div class="cat-grid" id="accGrid"></div></div>
+      <div class="cat-cards">
+        <div class="card">
+          <div class="card-head" data-collapse><span class="ic">📂</span><h3>Material Categories</h3><span class="side" id="catSelSide"></span><span class="chev">▼</span></div>
+          <div class="card-body"><div class="cat-grid" id="catGrid"></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head" data-collapse><span class="ic">🧰</span><h3>Accessories Categories</h3><span class="side" id="accSelSide"></span><span class="chev">▼</span></div>
+          <div class="card-body"><div class="cat-grid" id="accGrid"></div></div>
+        </div>
       </div>
       <div class="searchrow">
         <div class="searchbox">
@@ -487,11 +499,12 @@ input:disabled,select:disabled,textarea:disabled{background:#f5f7fa;color:var(--
         <button class="btn solid hidden" id="btnSeed">🌱 Load Price List</button>
       </div>
       <div class="tiles" id="kpiTiles"></div>
-      <div class="chart-grid" style="margin-bottom:16px">
+      <div class="chart-grid four" style="margin-bottom:16px">
         <div class="chart-card"><h4>Materials by Category</h4><div class="cs">Item count per classification</div><canvas id="cvCatCount"></canvas></div>
+        <div class="chart-card"><h4>Accessories by Category</h4><div class="cs">Item count per classification</div><canvas id="cvAccCount"></canvas></div>
         <div class="chart-card"><h4>Price Change Split</h4><div class="cs">Reduced vs increased vs unchanged</div><canvas id="cvSplit"></canvas><div class="legend" id="splitLegend"></div></div>
+        <div class="chart-card"><h4>Weekly Material Price Updates</h4><div class="cs">Price changes per week · last 8 weeks</div><canvas id="cvWeekly"></canvas></div>
       </div>
-      <div class="chart-card" style="margin-bottom:16px"><h4>Weekly Material Price Updates</h4><div class="cs">Number of price changes per week · last 8 weeks</div><canvas id="cvWeekly" style="height:210px"></canvas></div>
       <div class="card">
         <div class="card-head" data-collapse><span class="ic">🔔</span><h3>Recent Price Changes</h3><span class="side" id="recentPriceSide"></span><span class="chev">▼</span></div>
         <div class="card-body" id="recentPrices"></div>
@@ -585,8 +598,8 @@ window.ACC_CATEGORIES=["Hardware – Runners, Drawers & Sliding", "Hardware – 
    MobiMate — Mobica Material Price List
    MT-Track architecture: single-file PWA + Firebase RTDB + SW cache ver
    ===================================================================== */
-const APP_VERSION = 'v1.11';
-const CACHE_NAME  = 'mobimate-v2026.07.27-11';
+const APP_VERSION = 'v1.12';
+const CACHE_NAME  = 'mobimate-v2026.07.27-12';
 
 const FIREBASE_CONFIG = {
   apiKey: "PASTE_API_KEY",
@@ -1150,7 +1163,7 @@ function renderDash(){
     ['FX Rate',fmt0(S.fx),'EGP / USD','amber','🌐'],
     ['Flagged / Review',fmt0(flagged),'need attention','purple','⚠️']
   ].map(([l,v,s,c,ic])=>`<div class="tile ${c}"><span class="ic">${ic}</span><div class="lbl">${l}</div><div class="val">${v}</div><div class="sub">${s}</div></div>`).join('');
-  drawCatCount('cvCatCount'); drawSplit('cvSplit'); drawWeekly('cvWeekly');
+  drawCatCount('cvCatCount'); drawAccCount('cvAccCount'); drawSplit('cvSplit'); drawWeekly('cvWeekly');
 
   const pchg=Object.values(S.activity||{}).filter(x=>x.type==='price').sort((x,y)=>y.at.localeCompare(x.at)).slice(0,8);
   $('#recentPriceSide').textContent=pchg.length?`${pchg.length} recent`:'';
@@ -1461,13 +1474,17 @@ function ctxOf(id){ const c=$('#'+id); if(!c)return null; const r=c.getBoundingC
   c.width=Math.max(260,r.width)*dpr; c.height=(r.height||220)*dpr; const x=c.getContext&&c.getContext('2d'); if(!x)return null;
   x.setTransform(dpr,0,0,dpr,0,0); x.clearRect(0,0,c.width,c.height); return {x,w:c.width/dpr,h:c.height/dpr}; }
 function label(x,t,px,py,align='center',size=9,color='#64748b',bold=false){ x.fillStyle=color; x.font=`${bold?'700 ':''}${size}px Segoe UI,sans-serif`; x.textAlign=align; x.textBaseline='middle'; x.fillText(t,px,py); }
-function drawCatCount(id){ const c=ctxOf(id); if(!c)return; const {x,w,h}=c; const pad={l:120,r:38,t:6,b:10};
-  let rows=(S.lists.categories||[]).map(cat=>[shortCat(cat),matsInCat(cat).length]).filter(r=>r[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,10);
-  if(!rows.length){ label(x,'No materials yet',w/2,h/2,'center',12); return; }
-  const max=Math.max(...rows.map(r=>r[1])); const bh=(h-pad.t-pad.b)/rows.length;
+function drawCatBars(id,cats,countFn,emptyMsg){ const c=ctxOf(id); if(!c)return; const {x,w,h}=c;
+  const padL=w<360?84:(w<460?100:120), pad={l:padL,r:28,t:5,b:8};
+  let rows=cats.map(cat=>[shortCat(cat),countFn(cat)]).filter(r=>r[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  if(!rows.length){ label(x,emptyMsg,w/2,h/2,'center',11,'#94a3b8'); return; }
+  const max=Math.max(...rows.map(r=>r[1])); const bh=(h-pad.t-pad.b)/rows.length; const maxc=Math.floor((padL-14)/5.6);
   rows.forEach((r,i)=>{ const y=pad.t+i*bh+bh*.2,bhh=bh*.6,len=r[1]/max*(w-pad.l-pad.r);
     x.fillStyle=PAL[i%PAL.length]; x.beginPath(); (x.roundRect?x.roundRect(pad.l,y,Math.max(3,len),bhh,4):x.rect(pad.l,y,Math.max(3,len),bhh)); x.fill();
-    label(x,r[0].length>17?r[0].slice(0,16)+'…':r[0],pad.l-7,y+bhh/2,'right',9.5,'#1e2a3a',true); label(x,r[1],pad.l+len+6,y+bhh/2,'left',10,'#64748b',true); }); }
+    const nm=r[0].length>maxc?r[0].slice(0,maxc-1)+'…':r[0];
+    label(x,nm,pad.l-6,y+bhh/2,'right',8.5,'#1e2a3a',true); label(x,r[1],pad.l+len+5,y+bhh/2,'left',9.5,'#64748b',true); }); }
+function drawCatCount(id){ drawCatBars(id,(S.lists.categories||[]),c=>matsInCat(c).length,'No materials yet'); }
+function drawAccCount(id){ drawCatBars(id,(S.lists.accCategories||[]),c=>accsInCat(c).length,'No accessories yet'); }
 function drawSplit(id){ const c=ctxOf(id); if(!c)return; const {x,w,h}=c; const a=matList();
   const down=a.filter(m=>moveOf(m)==='down').length, up=a.filter(m=>moveOf(m)==='up').length, flat=a.length-down-up;
   const rows=[['Reduced',down,'#128a4b'],['Increased',up,'#e23b3b'],['Unchanged',flat,'#94a3b8']]; const tot=down+up+flat;
@@ -1487,15 +1504,15 @@ function drawWeekly(id){ const c=ctxOf(id); if(!c)return; const {x,w,h}=c;
     const wk=weeks.find(k=>k.start.getTime()===ws.getTime()); if(wk)wk.count++; }); });
   const total=weeks.reduce((s,k)=>s+k.count,0);
   const max=Math.max(1,...weeks.map(k=>k.count));
-  const pad={l:24,r:10,t:16,b:26}, bw=(w-pad.l-pad.r)/N;
+  const pad={l:20,r:8,t:16,b:24}, bw=(w-pad.l-pad.r)/N, compact=w<420;
   x.strokeStyle='#eee2d2'; x.lineWidth=1; x.beginPath(); x.moveTo(pad.l,h-pad.b+.5); x.lineTo(w-pad.r,h-pad.b+.5); x.stroke();
   weeks.forEach((k,i)=>{ const bx=pad.l+i*bw+bw*0.2, bwd=bw*0.6, bh=(k.count/max)*(h-pad.t-pad.b), by=h-pad.b-bh;
-    x.fillStyle=k.count?'#ea7317':'#ecdfca'; x.beginPath(); (x.roundRect?x.roundRect(bx,by,bwd,Math.max(2,bh),4):x.rect(bx,by,bwd,Math.max(2,bh))); x.fill();
-    if(k.count) label(x,k.count,bx+bwd/2,by-8,'center',10,'#1e2a3a',true);
-    label(x,(k.start.getDate())+'/'+(k.start.getMonth()+1),bx+bwd/2,h-pad.b+11,'center',8.5,'#64748b'); });
-  if(!total) label(x,'No price updates in the last 8 weeks',w/2,h/2-4,'center',11,'#94a3b8');
+    x.fillStyle=k.count?'#ea7317':'#ecdfca'; x.beginPath(); (x.roundRect?x.roundRect(bx,by,bwd,Math.max(2,bh),3):x.rect(bx,by,bwd,Math.max(2,bh))); x.fill();
+    if(k.count) label(x,k.count,bx+bwd/2,by-7,'center',compact?9:10,'#1e2a3a',true);
+    label(x,(k.start.getDate())+'/'+(k.start.getMonth()+1),bx+bwd/2,h-pad.b+10,'center',compact?7:8.5,'#64748b'); });
+  if(!total) label(x,'No price updates yet',w/2,h/2-4,'center',10.5,'#94a3b8');
 }
-function renderCharts(){ drawCatCount('cvCatCount'); drawSplit('cvSplit'); drawWeekly('cvWeekly'); }
+function renderCharts(){ drawCatCount('cvCatCount'); drawAccCount('cvAccCount'); drawSplit('cvSplit'); drawWeekly('cvWeekly'); }
 let rzT; window.addEventListener('resize',()=>{ clearTimeout(rzT); rzT=setTimeout(()=>{ renderCharts(); positionAllDD(); },180); });
 window.addEventListener('scroll',()=>{ positionAllDD(); },true);
 
