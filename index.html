@@ -491,6 +491,7 @@ input:disabled,select:disabled,textarea:disabled{background:#f5f7fa;color:var(--
         <div class="chart-card"><h4>Materials by Category</h4><div class="cs">Item count per classification</div><canvas id="cvCatCount"></canvas></div>
         <div class="chart-card"><h4>Price Change Split</h4><div class="cs">Reduced vs increased vs unchanged</div><canvas id="cvSplit"></canvas><div class="legend" id="splitLegend"></div></div>
       </div>
+      <div class="chart-card" style="margin-bottom:16px"><h4>Weekly Material Price Updates</h4><div class="cs">Number of price changes per week · last 8 weeks</div><canvas id="cvWeekly" style="height:210px"></canvas></div>
       <div class="card">
         <div class="card-head" data-collapse><span class="ic">🔔</span><h3>Recent Price Changes</h3><span class="side" id="recentPriceSide"></span><span class="chev">▼</span></div>
         <div class="card-body" id="recentPrices"></div>
@@ -584,8 +585,8 @@ window.ACC_CATEGORIES=["Hardware – Runners, Drawers & Sliding", "Hardware – 
    MobiMate — Mobica Material Price List
    MT-Track architecture: single-file PWA + Firebase RTDB + SW cache ver
    ===================================================================== */
-const APP_VERSION = 'v1.10';
-const CACHE_NAME  = 'mobimate-v2026.07.27-10';
+const APP_VERSION = 'v1.11';
+const CACHE_NAME  = 'mobimate-v2026.07.27-11';
 
 const FIREBASE_CONFIG = {
   apiKey: "PASTE_API_KEY",
@@ -1149,7 +1150,7 @@ function renderDash(){
     ['FX Rate',fmt0(S.fx),'EGP / USD','amber','🌐'],
     ['Flagged / Review',fmt0(flagged),'need attention','purple','⚠️']
   ].map(([l,v,s,c,ic])=>`<div class="tile ${c}"><span class="ic">${ic}</span><div class="lbl">${l}</div><div class="val">${v}</div><div class="sub">${s}</div></div>`).join('');
-  drawCatCount('cvCatCount'); drawSplit('cvSplit');
+  drawCatCount('cvCatCount'); drawSplit('cvSplit'); drawWeekly('cvWeekly');
 
   const pchg=Object.values(S.activity||{}).filter(x=>x.type==='price').sort((x,y)=>y.at.localeCompare(x.at)).slice(0,8);
   $('#recentPriceSide').textContent=pchg.length?`${pchg.length} recent`:'';
@@ -1476,7 +1477,25 @@ function drawSplit(id){ const c=ctxOf(id); if(!c)return; const {x,w,h}=c; const 
   x.globalCompositeOperation='destination-out'; x.beginPath(); x.arc(cx,cy,r0,0,Math.PI*2); x.fill(); x.globalCompositeOperation='source-over';
   label(x,tot,cx,cy-6,'center',17,'#1e2a3a',true); label(x,'materials',cx,cy+11,'center',9.5);
   $('#splitLegend').innerHTML=rows.map(r=>`<span><i style="background:${r[2]}"></i>${r[0]} ${r[1]}</span>`).join(''); }
-function renderCharts(){ drawCatCount('cvCatCount'); drawSplit('cvSplit'); }
+function weekStart(d){ const x=new Date(d); if(isNaN(x))return null; const day=(x.getDay()+6)%7; x.setHours(0,0,0,0); x.setDate(x.getDate()-day); return x; }
+function drawWeekly(id){ const c=ctxOf(id); if(!c)return; const {x,w,h}=c;
+  const N=8, now=new Date(), curMon=weekStart(now);
+  const weeks=[]; for(let i=N-1;i>=0;i--){ const d=new Date(curMon); d.setDate(d.getDate()-i*7); weeks.push({start:d,count:0}); }
+  const firstT=weeks[0].start.getTime();
+  matList().forEach(m=>{ if(domainOf(m)!=='material')return; (m.history||[]).forEach(hh=>{ if(hh.from==null||hh.from===undefined)return;
+    const t=new Date(hh.at); if(isNaN(t)||t.getTime()<firstT)return; const ws=weekStart(t); if(!ws)return;
+    const wk=weeks.find(k=>k.start.getTime()===ws.getTime()); if(wk)wk.count++; }); });
+  const total=weeks.reduce((s,k)=>s+k.count,0);
+  const max=Math.max(1,...weeks.map(k=>k.count));
+  const pad={l:24,r:10,t:16,b:26}, bw=(w-pad.l-pad.r)/N;
+  x.strokeStyle='#eee2d2'; x.lineWidth=1; x.beginPath(); x.moveTo(pad.l,h-pad.b+.5); x.lineTo(w-pad.r,h-pad.b+.5); x.stroke();
+  weeks.forEach((k,i)=>{ const bx=pad.l+i*bw+bw*0.2, bwd=bw*0.6, bh=(k.count/max)*(h-pad.t-pad.b), by=h-pad.b-bh;
+    x.fillStyle=k.count?'#ea7317':'#ecdfca'; x.beginPath(); (x.roundRect?x.roundRect(bx,by,bwd,Math.max(2,bh),4):x.rect(bx,by,bwd,Math.max(2,bh))); x.fill();
+    if(k.count) label(x,k.count,bx+bwd/2,by-8,'center',10,'#1e2a3a',true);
+    label(x,(k.start.getDate())+'/'+(k.start.getMonth()+1),bx+bwd/2,h-pad.b+11,'center',8.5,'#64748b'); });
+  if(!total) label(x,'No price updates in the last 8 weeks',w/2,h/2-4,'center',11,'#94a3b8');
+}
+function renderCharts(){ drawCatCount('cvCatCount'); drawSplit('cvSplit'); drawWeekly('cvWeekly'); }
 let rzT; window.addEventListener('resize',()=>{ clearTimeout(rzT); rzT=setTimeout(()=>{ renderCharts(); positionAllDD(); },180); });
 window.addEventListener('scroll',()=>{ positionAllDD(); },true);
 
